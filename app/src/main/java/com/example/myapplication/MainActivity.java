@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         Button start = (Button) findViewById(R.id.start);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
+            // Takes the player to config screen on button press
             public void onClick(View view) {
                 Intent nextScreen = new Intent(MainActivity.this, Config.class);
                 startActivity(nextScreen);

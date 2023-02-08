@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spritepicker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Config">
@@ -19,4 +20,97 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.17" />
+
+    <Button
+        android:id="@+id/Next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.911" />
+
+    <TextView
+        android:id="@+id/warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The name entered is invalid."
+        android:textColor="#FF0707"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299"
+        tools:visibility="visible" />
+
+    <RadioGroup
+        android:id="@+id/difficulty"
+        android:layout_width="157dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="292dp"
+        android:layout_marginEnd="252dp"
+        android:layout_marginBottom="439dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.203"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214">
+
+        <RadioButton
+            android:id="@+id/easy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Easy" />
+
+        <RadioButton
+            android:id="@+id/medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medium" />
+
+        <RadioButton
+            android:id="@+id/hard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hard" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/sprite"
+        android:layout_width="120dp"
+        android:layout_height="181dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginEnd="252dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.801">
+
+        <RadioButton
+            android:id="@+id/sprite1"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:text="Sprite 1" />
+
+        <RadioButton
+            android:id="@+id/sprite2"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:text="Sprite 2" />
+
+        <RadioButton
+            android:id="@+id/sprite3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sprite 3" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
