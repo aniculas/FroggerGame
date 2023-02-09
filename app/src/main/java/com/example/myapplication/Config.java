@@ -11,7 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Config extends AppCompatActivity {
-
+    private static RadioGroup difficulty;
+    private static RadioGroup spritepicker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +24,8 @@ public class Config extends AppCompatActivity {
             public void onClick(View view) {
                 EditText name = (EditText) findViewById(R.id.name);
                 TextView warning = (TextView) findViewById(R.id.warning);
-                RadioGroup difficulty = (RadioGroup) findViewById(R.id.difficulty);
-                RadioGroup spritepicker = (RadioGroup) findViewById(R.id.spritepicker);
+                difficulty = (RadioGroup) findViewById(R.id.difficulty);
+                spritepicker = (RadioGroup) findViewById(R.id.spritepicker);
                 if (name == null || name.getText().toString().trim().length() == 0 || difficulty.getCheckedRadioButtonId() == -1 || spritepicker.getCheckedRadioButtonId() == -1) {
                     warning.setVisibility(view.VISIBLE);    //Shows a warning message if name is invalid
                 } else {
@@ -33,5 +34,11 @@ public class Config extends AppCompatActivity {
                 }
             }
         });
+    }
+    public static RadioGroup getDifficulty() {
+        return difficulty;
+    }
+    public static RadioGroup getSprite() {
+        return spritepicker;
     }
 }
