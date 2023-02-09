@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,12 +23,13 @@ public class Config extends AppCompatActivity {
             public void onClick(View view) {
                 EditText name = (EditText) findViewById(R.id.name);
                 TextView warning = (TextView) findViewById(R.id.warning);
-                if (name == null || name.getText().toString().trim().length() == 0) {
+                RadioGroup difficulty = (RadioGroup) findViewById(R.id.difficulty);
+                RadioGroup spritepicker = (RadioGroup) findViewById(R.id.spritepicker);
+                if (name == null || name.getText().toString().trim().length() == 0 || difficulty.getCheckedRadioButtonId() == -1 || spritepicker.getCheckedRadioButtonId() == -1) {
                     warning.setVisibility(view.VISIBLE);    //Shows a warning message if name is invalid
                 } else {
                     Intent nextScreen = new Intent(Config.this, Gameplay.class);
                     startActivity(nextScreen);
-                    System.out.println(name.getText().toString());
                 }
             }
         });

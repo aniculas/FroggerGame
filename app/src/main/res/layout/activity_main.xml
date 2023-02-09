@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/welcome"
         android:layout_width="229dp"
-        android:layout_height="38dp"
+        android:layout_height="35dp"
         android:text="Press start to play!"
         android:textColor="#1F2C73"
         android:textSize="23sp"
