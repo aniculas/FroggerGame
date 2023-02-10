@@ -1,12 +1,18 @@
 package com.example.myapplication;
 
 
+import static com.example.myapplication.Config.getBlue;
 import static com.example.myapplication.Config.getDifficulty;
+import static com.example.myapplication.Config.getEasy;
+import static com.example.myapplication.Config.getGreen;
+import static com.example.myapplication.Config.getMedium;
+import static com.example.myapplication.Config.getRed;
 import static com.example.myapplication.Config.getSprite;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +25,11 @@ public class Gameplay extends AppCompatActivity {
         setContentView(R.layout.activity_gameplay);
         RadioGroup difficulty = getDifficulty();
         RadioGroup spritepicker = getSprite();
+        RadioButton medium = getMedium();
+        RadioButton easy = getEasy();
+        RadioButton green = getGreen();
+        RadioButton blue = getBlue();
+        RadioButton red = getRed();
         ImageView playersprite = (ImageView) findViewById(R.id.playerspriteg);
         ImageView heart1 = (ImageView) findViewById(R.id.heart1);
         ImageView heart2 = (ImageView) findViewById(R.id.heart2);
@@ -26,25 +37,19 @@ public class Gameplay extends AppCompatActivity {
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
         ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
-        switch (difficulty.getCheckedRadioButtonId()) {
-            case 2131231219: //id of easy difficulty button
-                heart2.setVisibility(View.VISIBLE);
-                heart3.setVisibility(View.VISIBLE);
-                break;
-            case 2131231221: //id of medium difficulty button
-                heart2.setVisibility(View.VISIBLE);
-                break;
+        if (difficulty.getCheckedRadioButtonId() == easy.getId()) {
+            heart2.setVisibility(View.VISIBLE);
+            heart3.setVisibility(View.VISIBLE);
         }
-        switch (spritepicker.getCheckedRadioButtonId()) {
-            case 2131231231:
-                playerspriteg.setVisibility(View.VISIBLE);
-                break;
-            case 2131231232:
-                playerspriter.setVisibility(View.VISIBLE);
-                break;
-            case 2131231233:
-                playerspriteb.setVisibility(View.VISIBLE);
-                break;
+        if (difficulty.getCheckedRadioButtonId() == medium.getId()) {
+            heart2.setVisibility(View.VISIBLE);
+        }
+        if (spritepicker.getCheckedRadioButtonId() == green.getId()) {
+            playerspriteg.setVisibility(View.VISIBLE);
+        } else if (spritepicker.getCheckedRadioButtonId() == red.getId()) {
+            playerspriter.setVisibility(View.VISIBLE);
+        } else if (spritepicker.getCheckedRadioButtonId() == blue.getId()) {
+            playerspriteb.setVisibility(View.VISIBLE);
         }
     }
 }
