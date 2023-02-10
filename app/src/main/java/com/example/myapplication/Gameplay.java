@@ -46,6 +46,5 @@ public class Gameplay extends AppCompatActivity {
                 playerspriteb.setVisibility(View.VISIBLE);
                 break;
         }
-        System.out.println(spritepicker.getCheckedRadioButtonId());
     }
 }
