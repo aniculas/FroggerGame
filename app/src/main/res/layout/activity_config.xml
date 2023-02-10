@@ -5,7 +5,8 @@
     android:id="@+id/v"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Config">
+    tools:context=".Config"
+    android:background="@drawable/black">
 
     <ImageView
         android:id="@+id/frogg"
@@ -26,6 +27,8 @@
         android:ems="10"
         android:hint="Enter a name here"
         android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -78,19 +81,22 @@
             android:id="@+id/easy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Easy" />
+            android:text="Easy"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medium" />
+            android:text="Medium"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/hard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hard" />
+            android:text="Hard"
+            android:textColor="#FFFFFF" />
     </RadioGroup>
 
     <RadioGroup
@@ -110,19 +116,22 @@
             android:id="@+id/sprite1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sprite 1" />
+            android:text="Sprite 1"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/sprite2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sprite 2"/>
+            android:text="Sprite 2"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/sprite3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sprite 3" />
+            android:text="Sprite 3"
+            android:textColor="#FFFFFF" />
 
     </RadioGroup>
 
