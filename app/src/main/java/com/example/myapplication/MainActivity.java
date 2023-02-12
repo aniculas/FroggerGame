@@ -23,5 +23,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(nextScreen);
             }
         });
+        Button exit = (Button) findViewById(R.id.exit);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
+            }
+        });
     }
 }
