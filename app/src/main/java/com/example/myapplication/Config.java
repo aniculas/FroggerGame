@@ -37,8 +37,10 @@ public class Config extends AppCompatActivity {
                 red = (RadioButton) findViewById(R.id.sprite2);
                 green = (RadioButton) findViewById(R.id.sprite1);
                 blue = (RadioButton) findViewById(R.id.sprite3);
-                if (name == null || name.getText().toString().trim().length() == 0 || difficulty.getCheckedRadioButtonId() == -1 || spritepicker.getCheckedRadioButtonId() == -1) {
-                    warning.setVisibility(view.VISIBLE);    //Shows a warning message if name is invalid
+                if (name == null || name.getText().toString().trim().length() == 0
+                        || difficulty.getCheckedRadioButtonId() == -1
+                        || spritepicker.getCheckedRadioButtonId() == -1) {
+                    warning.setVisibility(view.VISIBLE); //Warning message if name is invalid
                 } else {
                     Intent nextScreen = new Intent(Config.this, Gameplay.class);
                     startActivity(nextScreen);
