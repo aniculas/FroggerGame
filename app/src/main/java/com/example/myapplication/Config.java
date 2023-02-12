@@ -19,6 +19,7 @@ public class Config extends AppCompatActivity {
     private static RadioButton red;
     private static RadioButton green;
     private static RadioButton blue;
+    private static EditText name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,7 @@ public class Config extends AppCompatActivity {
             @Override
             //Takes the player to the gameplay screen on button press
             public void onClick(View view) {
-                EditText name = (EditText) findViewById(R.id.name);
+                name = (EditText) findViewById(R.id.name);
                 TextView warning = (TextView) findViewById(R.id.warning);
                 difficulty = (RadioGroup) findViewById(R.id.difficulty);
                 spritepicker = (RadioGroup) findViewById(R.id.spritepicker);
@@ -68,5 +69,8 @@ public class Config extends AppCompatActivity {
     }
     public static RadioButton getBlue() {
         return blue;
+    }
+    public static EditText getName() {
+        return name;
     }
 }

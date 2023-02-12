@@ -6,6 +6,7 @@ import static com.example.myapplication.Config.getDifficulty;
 import static com.example.myapplication.Config.getEasy;
 import static com.example.myapplication.Config.getGreen;
 import static com.example.myapplication.Config.getMedium;
+import static com.example.myapplication.Config.getName;
 import static com.example.myapplication.Config.getRed;
 import static com.example.myapplication.Config.getSprite;
 
@@ -14,8 +15,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 public class Gameplay extends AppCompatActivity {
 
@@ -37,12 +41,16 @@ public class Gameplay extends AppCompatActivity {
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
         ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
+        TextView diff = (TextView) findViewById(R.id.diff);
         if (difficulty.getCheckedRadioButtonId() == easy.getId()) {
             heart2.setVisibility(View.VISIBLE);
             heart3.setVisibility(View.VISIBLE);
-        }
-        if (difficulty.getCheckedRadioButtonId() == medium.getId()) {
+            diff.setText("Easy");
+        }else if (difficulty.getCheckedRadioButtonId() == medium.getId()) {
             heart2.setVisibility(View.VISIBLE);
+            diff.setText("Medium");
+        } else {
+            diff.setText("Hard");
         }
         if (spritepicker.getCheckedRadioButtonId() == green.getId()) {
             playerspriteg.setVisibility(View.VISIBLE);
@@ -51,5 +59,7 @@ public class Gameplay extends AppCompatActivity {
         } else if (spritepicker.getCheckedRadioButtonId() == blue.getId()) {
             playerspriteb.setVisibility(View.VISIBLE);
         }
+        TextView playerName = (TextView) findViewById(R.id.playername);
+        playerName.setText(getName().getText());
     }
 }
