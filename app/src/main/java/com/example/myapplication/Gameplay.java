@@ -11,6 +11,7 @@ import static com.example.myapplication.Config.getRed;
 import static com.example.myapplication.Config.getSprite;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -21,6 +22,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class Gameplay extends AppCompatActivity {
+
+    float upx;
+    float downx;
+    float upy;
+    float downy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +51,7 @@ public class Gameplay extends AppCompatActivity {
             heart2.setVisibility(View.VISIBLE);
             heart3.setVisibility(View.VISIBLE);
             diff.setText("Easy");
-        }else if (difficulty.getCheckedRadioButtonId() == medium.getId()) {
+        } else if (difficulty.getCheckedRadioButtonId() == medium.getId()) {
             heart2.setVisibility(View.VISIBLE);
             diff.setText("Medium");
         } else {
@@ -60,5 +66,47 @@ public class Gameplay extends AppCompatActivity {
         }
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        ImageView playersprite;
+        ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
+        ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
+        ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
+        if (playerspriteg.getVisibility() == View.VISIBLE) {
+            playersprite = playerspriteg;
+        } else if (playerspriter.getVisibility() == View.VISIBLE) {
+            playersprite = playerspriter;
+        } else {
+            playersprite = playerspriteb;
+        }
+            switch(event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+                downx = event.getX();
+                downy = event.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                upx = event.getX();
+                upy = event.getY();
+                float deltax = downx - upx;
+                float deltay = downy - upy;
+                if (Math.abs(deltax) > Math.abs(deltay)){
+                    if (downx > upx) {
+                        playersprite.setX(playerspriteg.getX() - 46);
+                    } else {
+                        playersprite.setX(playerspriteg.getX() + 46);
+                    }
+                } else {
+                    if (downy > upy) {
+                        playersprite.setY(playerspriteg.getY() - 46);
+                    } else {
+                        playersprite.setY(playerspriteg.getY() + 46);
+                    }
+                }
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 }
