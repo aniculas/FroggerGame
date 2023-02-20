@@ -74,7 +74,7 @@ public class Gameplay extends AppCompatActivity {
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
         ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
-        if (playerspriteg.getVisibility() == View.VISIBLE) {
+        if (playerspriteg.getVisibility() == View.VISIBLE) { //checks which sprite was selected
             playersprite = playerspriteg;
         } else if (playerspriter.getVisibility() == View.VISIBLE) {
             playersprite = playerspriter;
@@ -83,26 +83,26 @@ public class Gameplay extends AppCompatActivity {
         }
             switch(event.getAction())
         {
-            case MotionEvent.ACTION_DOWN:
-                downx = event.getX();
-                downy = event.getY();
+            case MotionEvent.ACTION_DOWN: //when swipe started
+                downx = event.getX(); //gets x of swipe start
+                downy = event.getY(); //gets y of swipe start
                 break;
-            case MotionEvent.ACTION_UP:
-                upx = event.getX();
-                upy = event.getY();
+            case MotionEvent.ACTION_UP: //when swipe ended
+                upx = event.getX(); //gets x of swipe end
+                upy = event.getY(); //gets y of swipe end
                 float deltax = downx - upx;
                 float deltay = downy - upy;
-                if (Math.abs(deltax) > Math.abs(deltay)){
-                    if (downx > upx) {
-                        playersprite.setX(playerspriteg.getX() - 46);
+                if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
+                    if (downx > upx) { // checks if swipe was left to right
+                        playersprite.setX(playerspriteg.getX() - 89);
                     } else {
-                        playersprite.setX(playerspriteg.getX() + 46);
+                        playersprite.setX(playerspriteg.getX() + 89);
                     }
                 } else {
-                    if (downy > upy) {
-                        playersprite.setY(playerspriteg.getY() - 46);
+                    if (downy > upy) { //checks if swipe was top to bottom
+                        playersprite.setY(playerspriteg.getY() - 89);
                     } else {
-                        playersprite.setY(playerspriteg.getY() + 46);
+                        playersprite.setY(playerspriteg.getY() + 89);
                     }
                 }
                 break;
