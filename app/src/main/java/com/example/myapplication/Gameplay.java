@@ -94,15 +94,15 @@ public class Gameplay extends AppCompatActivity {
                 float deltay = downy - upy;
                 if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
                     if (downx > upx) { // checks if swipe was left to right
-                        playersprite.setX(playerspriteg.getX() - 89);
+                        playersprite.setX(playersprite.getX() - 89);
                     } else {
-                        playersprite.setX(playerspriteg.getX() + 89);
+                        playersprite.setX(playersprite.getX() + 89);
                     }
                 } else {
                     if (downy > upy) { //checks if swipe was top to bottom
-                        playersprite.setY(playerspriteg.getY() - 89);
+                        playersprite.setY(playersprite.getY() - 89);
                     } else {
-                        playersprite.setY(playerspriteg.getY() + 89);
+                        playersprite.setY(playersprite.getY() + 89);
                     }
                 }
                 break;
