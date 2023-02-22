@@ -43,8 +43,6 @@ public class Gameplay extends AppCompatActivity {
         RadioButton green = getGreen();
         RadioButton blue = getBlue();
         RadioButton red = getRed();
-        ImageView playersprite = (ImageView) findViewById(R.id.playerspriteg);
-        ImageView heart1 = (ImageView) findViewById(R.id.heart1);
         ImageView heart2 = (ImageView) findViewById(R.id.heart2);
         ImageView heart3 = (ImageView) findViewById(R.id.heart3);
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
@@ -105,16 +103,16 @@ public class Gameplay extends AppCompatActivity {
                 float deltay = downy - upy;
                 if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
                     if (downx > upx && countNX > outNX) { // checks if swipe was left to right
-                        playersprite.setX(playerspriteg.getX() - 89);
+                        playersprite.setX(playersprite.getX() - 89);
                     }
                     if (downx < upx && countPX < outPX){
-                        playersprite.setX(playerspriteg.getX() + 89);
+                        playersprite.setX(playersprite.getX() + 89);
                     }
                 } else {
                     if (downy > upy && countNY > outNY) { //checks if swipe was top to bottom
-                        playersprite.setY(playerspriteg.getY() - 89);
-                    } if (downy < upy && (playerspriteg.getY() < 2300)) {
-                        playersprite.setY(playerspriteg.getY() + 89);
+                        playersprite.setY(playersprite.getY() - 89);
+                    } if (downy < upy && (playersprite.getY() < 2300)) {
+                        playersprite.setY(playersprite.getY() + 89);
                     }
                 }
                 break;
