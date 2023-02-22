@@ -27,6 +27,10 @@ public class Gameplay extends AppCompatActivity {
     float downx;
     float upy;
     float downy;
+    float outPX;
+    float outNX;
+    float outPY;
+    float outNY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,32 +85,42 @@ public class Gameplay extends AppCompatActivity {
         } else {
             playersprite = playerspriteb;
         }
-            switch(event.getAction())
-        {
-            case MotionEvent.ACTION_DOWN: //when swipe started
-                downx = event.getX(); //gets x of swipe start
-                downy = event.getY(); //gets y of swipe start
-                break;
-            case MotionEvent.ACTION_UP: //when swipe ended
-                upx = event.getX(); //gets x of swipe end
-                upy = event.getY(); //gets y of swipe end
-                float deltax = downx - upx;
-                float deltay = downy - upy;
-                if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
-                    if (downx > upx) { // checks if swipe was left to right
-                        playersprite.setX(playerspriteg.getX() - 89);
-                    } else {
-                        playersprite.setX(playerspriteg.getX() + 89);
+//        float countY = playersprite.getY();
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN: //when swipe started
+                    downx = event.getX(); //gets x of swipe start
+                    downy = event.getY(); //gets y of swipe start
+                    outPX = 1200;
+                    outNX = -180;
+                    outPY = -1200;
+                    outNY = 100;
+                    break;
+                case MotionEvent.ACTION_UP: //when swipe ended
+                    upx = event.getX(); //gets x of swipe end
+                    upy = event.getY(); //gets y of swipe end
+                    float countPX = playersprite.getX() + 89;
+                    float countNX = playersprite.getX() - 89;
+//                    float countPY = playersprite.getY() + 89;
+                    float countNY = playersprite.getY() - 89;
+                    float deltax = downx - upx;
+                    float deltay = downy - upy;
+                        if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
+                            if (downx > upx && countNX > outNX) { // checks if swipe was left to right
+                                playersprite.setX(playerspriteg.getX() - 89);
+                            }
+                            if (downx < upx && countPX < outPX){
+                                playersprite.setX(playerspriteg.getX() + 89);
+                            }
+                        } else {
+                            if (downy > upy && countNY > outNY) { //checks if swipe was top to bottom
+                                playersprite.setY(playerspriteg.getY() - 89);
+                            } if (downy < upy && (playerspriteg.getY() < 2300)) {
+                                playersprite.setY(playerspriteg.getY() + 89);
+                            }
+                        }
+                        break;
                     }
-                } else {
-                    if (downy > upy) { //checks if swipe was top to bottom
-                        playersprite.setY(playerspriteg.getY() - 89);
-                    } else {
-                        playersprite.setY(playerspriteg.getY() + 89);
-                    }
-                }
-                break;
-        }
-        return super.onTouchEvent(event);
+
+            return super.onTouchEvent(event);
     }
 }
