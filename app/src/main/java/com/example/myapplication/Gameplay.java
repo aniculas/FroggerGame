@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -66,6 +67,41 @@ public class Gameplay extends AppCompatActivity {
         }
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
+
+        // Background
+        int numRoads = (int) (Math.random() * 2);
+        ImageView safe = (ImageView) findViewById(R.id.safe);
+        safe.setImageResource(getResources().getIdentifier("frogb", "drawable", getPackageName()));
+        ImageView bg1 = (ImageView) findViewById(R.id.bg1);
+        bg1.setImageResource(getResources().getIdentifier("frogg", "drawable", getPackageName()));
+        ImageView bg2 = (ImageView) findViewById(R.id.bg2);
+        bg2.setImageResource(getResources().getIdentifier("frogg", "drawable", getPackageName()));
+        ImageView bg3 = (ImageView) findViewById(R.id.bg3);
+        bg3.setImageResource(getResources().getIdentifier("frogg", "drawable", getPackageName()));
+        ImageView bg4 = (ImageView) findViewById(R.id.bg4);
+        if (numRoads > 0) {
+            bg4.setImageResource(getResources().getIdentifier("frogg", "drawable", getPackageName()));
+        } else {
+            bg4.setImageResource(getResources().getIdentifier("frogb", "drawable", getPackageName()));
+        }
+        ImageView bg5 = (ImageView) findViewById(R.id.bg5);
+        if (numRoads == 0) {
+            bg5.setImageResource(getResources().getIdentifier("frogr", "drawable", getPackageName()));
+        } else if (numRoads == 1) {
+            bg5.setImageResource(getResources().getIdentifier("frogb", "drawable", getPackageName()));
+        } else {
+            bg5.setImageResource(getResources().getIdentifier("frogg", "drawable", getPackageName()));
+        }
+        ImageView bg6 = (ImageView) findViewById(R.id.bg6);
+        if (numRoads == 2) {
+            bg6.setImageResource(getResources().getIdentifier("frogb", "drawable", getPackageName()));
+        } else {
+            bg6.setImageResource(getResources().getIdentifier("frogr", "drawable", getPackageName()));
+        }
+        ImageView bg7 = (ImageView) findViewById(R.id.bg7);
+        bg7.setImageResource(getResources().getIdentifier("frogr", "drawable", getPackageName()));
+        ImageView bg8 = (ImageView) findViewById(R.id.bg8);
+        bg7.setImageResource(getResources().getIdentifier("frogr", "drawable", getPackageName()));
     }
     @Override
     public boolean onTouchEvent(MotionEvent event)
