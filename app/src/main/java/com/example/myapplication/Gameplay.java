@@ -69,9 +69,12 @@ public class Gameplay extends AppCompatActivity {
         }
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
-
         // Background
         int numRoads = (int) (Math.random() * 2);
+        backgroundCreate(numRoads);
+    }
+    private void backgroundCreate(int numRoads) {
+
         ImageView safe = (ImageView) findViewById(R.id.safe);
         safe.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
