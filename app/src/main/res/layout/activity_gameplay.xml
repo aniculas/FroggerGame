@@ -8,21 +8,6 @@
     tools:context=".Gameplay">
 
     <ImageView
-        android:id="@+id/playerspriteb"
-        android:layout_width="111dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="150dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/frogb" />
-
-    <ImageView
         android:id="@+id/heart3"
         android:layout_width="49dp"
         android:layout_height="73dp"
@@ -63,35 +48,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/heart" />
-
-    <ImageView
-        android:id="@+id/playerspriteg"
-        android:layout_width="114dp"
-        android:layout_height="87dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/frogg"
-        tools:visibility="visible" />
-
-    <ImageView
-        android:id="@+id/playerspriter"
-        android:layout_width="113dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="150dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/frogr" />
 
     <TextView
         android:id="@+id/playername"
@@ -145,89 +101,152 @@
     <ImageView
         android:id="@+id/safe"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg1"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/safe"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg2"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg3"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg4"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg5"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg6"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg7"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/black" />
 
     <ImageView
         android:id="@+id/bg8"
         android:layout_width="411dp"
-        android:layout_height="64dp"
+        android:layout_height="68dp"
         app:layout_constraintBottom_toTopOf="@+id/bg7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/black" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/black"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/playerspriteg"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/frogg"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/playerspriter"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/frogr"
+        tools:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/playerspriteb"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/frogb"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
