@@ -18,7 +18,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -111,6 +110,8 @@ public class Gameplay extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
+        int yMovement = 120;
+        int xMovement = 89;
         ImageView playersprite;
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
@@ -126,32 +127,32 @@ public class Gameplay extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN: //when swipe started
                 downx = event.getX(); //gets x of swipe start
                 downy = event.getY(); //gets y of swipe start
-                outPX = 920;
-                outNX = -130;
+                outPX = 970;
+                outNX = -68;
                 outPY = 1900;
                 outNY = 200;
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
                 upx = event.getX(); //gets x of swipe end
                 upy = event.getY(); //gets y of swipe end
-                float countPX = playersprite.getX() + 89;
-                float countNX = playersprite.getX() - 89;
-                float countPY = playersprite.getY() + 89;
-                float countNY = playersprite.getY() - 89;
+                float countPX = playersprite.getX() + xMovement;
+                float countNX = playersprite.getX() - xMovement;
+                float countPY = playersprite.getY() + yMovement;
+                float countNY = playersprite.getY() - yMovement;
                 float deltax = downx - upx;
                 float deltay = downy - upy;
                 if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
                     if (downx > upx && countNX > outNX) { // checks if swipe was left to right
-                        playersprite.setX(playersprite.getX() - 89);
+                        playersprite.setX(playersprite.getX() - xMovement);
                     }
                     if (downx < upx && countPX < outPX){
-                        playersprite.setX(playersprite.getX() + 89);
+                        playersprite.setX(playersprite.getX() + xMovement);
                     }
                 } else {
                     if (downy > upy && countNY > outNY) { //checks if swipe was top to bottom
-                        playersprite.setY(playersprite.getY() - 89);
+                        playersprite.setY(playersprite.getY() - yMovement);
                     } if (downy < upy && (countPY < outPY)) {
-                        playersprite.setY(playersprite.getY() + 89);
+                        playersprite.setY(playersprite.getY() + yMovement);
                     }
                 }
                 break;

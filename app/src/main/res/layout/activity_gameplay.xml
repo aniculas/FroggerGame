@@ -224,8 +224,8 @@
 
     <ImageView
         android:id="@+id/playerspriteg"
-        android:layout_width="114dp"
-        android:layout_height="87dp"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

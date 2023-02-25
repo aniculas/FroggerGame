@@ -1,21 +1,19 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.Config.*;
-import static org.junit.Assert.*;
+import static com.example.myapplication.Config.getDifficulty;
+import static com.example.myapplication.Config.getName;
+import static com.example.myapplication.Config.getSprite;
 
-import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import org.junit.Test;
 
 public class ConfigTest {
 
+
     @Test
-    public void onCreate() {
+    public void checkSelected() {
         EditText name = getName();
-        TextView warning = getWarning();
-        name.setText(" ");
-        assertEquals(warning.getVisibility(), View.VISIBLE);
+        Config.checkSelected(name, getDifficulty(), getSprite());
     }
 }
