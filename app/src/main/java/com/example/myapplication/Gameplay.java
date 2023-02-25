@@ -126,7 +126,7 @@ public class Gameplay extends AppCompatActivity {
                 outPX = 1200;
                 outNX = -180;
                 outPY = -1200;
-                outNY = 100;
+                outNY = 100; //
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
                 upx = event.getX(); //gets x of swipe end
