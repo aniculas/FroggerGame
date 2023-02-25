@@ -103,7 +103,7 @@ public class Gameplay extends AppCompatActivity {
         ImageView bg7 = (ImageView) findViewById(R.id.bg7);
         bg7.setImageResource(getResources().getIdentifier("frogr", "drawable", getPackageName()));
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
-        bg7.setImageResource(getResources().getIdentifier("frogr", "drawable", getPackageName()));
+        bg8.setImageResource(getResources().getIdentifier("frogb", "drawable", getPackageName()));
     }
     @Override
     public boolean onTouchEvent(MotionEvent event)
