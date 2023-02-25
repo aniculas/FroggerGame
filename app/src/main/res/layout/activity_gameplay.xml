@@ -208,21 +208,6 @@
         tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/playerspriteb"
-        android:layout_width="111dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="150dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/frogb" />
-
-    <ImageView
         android:id="@+id/playerspriteg"
         android:layout_width="46dp"
         android:layout_height="46dp"
@@ -238,17 +223,30 @@
 
     <ImageView
         android:id="@+id/playerspriter"
-        android:layout_width="113dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="150dp"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/frogr" />
+        app:srcCompat="@drawable/frogr"
+        tools:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/playerspriteb"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/frogb"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
