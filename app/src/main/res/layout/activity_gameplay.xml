@@ -188,13 +188,13 @@
         android:id="@+id/bg8"
         android:layout_width="411dp"
         android:layout_height="64dp"
-        android:layout_marginTop="215dp"
         app:layout_constraintBottom_toTopOf="@+id/bg7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playername"
-        app:srcCompat="@drawable/black" />
+        app:srcCompat="@drawable/black"
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/playerspriteb"
