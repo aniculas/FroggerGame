@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import static org.junit.Assert.assertEquals;
 
+import android.widget.EditText;
+
 import org.junit.Test;
 
 /**
@@ -14,4 +16,5 @@ public class ExampleUnitTest {
     public void canMoveLeft() {
         assertEquals(4, 2 + 2);
     }
+
 }
