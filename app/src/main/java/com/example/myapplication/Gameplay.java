@@ -128,9 +128,9 @@ public class Gameplay extends AppCompatActivity {
                 downx = event.getX(); //gets x of swipe start
                 downy = event.getY(); //gets y of swipe start
                 outPX = 970;
-                outNX = -68;
+                outNX = -50;
                 outPY = 1900;
-                outNY = 200;
+                outNY = 800;
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
                 upx = event.getX(); //gets x of swipe end
