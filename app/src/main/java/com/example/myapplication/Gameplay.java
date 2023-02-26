@@ -32,6 +32,7 @@ public class Gameplay extends AppCompatActivity {
     float outPY;
     float outNY;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +73,10 @@ public class Gameplay extends AppCompatActivity {
         int numRoads = (int) (Math.random() * 2);
         backgroundCreate(numRoads);
     }
-    private void backgroundCreate(int numRoads) {
+//    protected void difficultySelect() {
+//
+//    }
+    protected void backgroundCreate(int numRoads) {
 
         ImageView safe = (ImageView) findViewById(R.id.safe);
         safe.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
@@ -111,7 +115,7 @@ public class Gameplay extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event)
     {
         int yMovement = 120;
-        int xMovement = 89;
+        int xMovement = 109;
         ImageView playersprite;
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
