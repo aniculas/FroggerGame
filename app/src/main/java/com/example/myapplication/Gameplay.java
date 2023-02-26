@@ -111,7 +111,7 @@ public class Gameplay extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event)
     {
         int yMovement = 120;
-        int xMovement = 89;
+        int xMovement = 109;
         ImageView playersprite;
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
