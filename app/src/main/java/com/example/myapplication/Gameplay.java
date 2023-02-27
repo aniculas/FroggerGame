@@ -31,6 +31,9 @@ public class Gameplay extends AppCompatActivity {
     float outNX;
     float outPY;
     float outNY;
+    int maxHeight = 0;
+    int height = 0;
+    int score = 0;
 
 
     @Override
@@ -155,13 +158,24 @@ public class Gameplay extends AppCompatActivity {
                 } else {
                     if (downy > upy && countNY > outNY) { //checks if swipe was top to bottom
                         playersprite.setY(playersprite.getY() - yMovement);
+                        height++;
+                        setScore();
                     } if (downy < upy && (countPY < outPY)) {
                         playersprite.setY(playersprite.getY() + yMovement);
+                        height--;
                     }
                 }
                 break;
         }
 
         return super.onTouchEvent(event);
+    }
+    public void setScore() {
+        TextView scoreText = (TextView) findViewById(R.id.score);
+        if (maxHeight < height) {
+            maxHeight = height;
+            score = score + 10;
+            scoreText.setText("Score: " + score);
+        }
     }
 }
