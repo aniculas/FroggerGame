@@ -89,7 +89,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="312dp"
         android:layout_marginBottom="576dp"
-        android:text="Score: 00000"
+        android:text="Score: 0"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
