@@ -10,15 +10,19 @@ import static com.example.myapplication.Config.getName;
 import static com.example.myapplication.Config.getRed;
 import static com.example.myapplication.Config.getSprite;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.concurrent.ExecutorService;
 
 
 public class Gameplay extends AppCompatActivity {
@@ -27,10 +31,10 @@ public class Gameplay extends AppCompatActivity {
     float downx;
     float upy;
     float downy;
-    float outPX;
-    float outNX;
-    float outPY;
-    float outNY;
+    float outPX = 970;
+    float outNX = -50;
+    float outPY = 1900;
+    float outNY = 800;
     int maxHeight = 0;
     int height = 0;
     int score = 0;
@@ -52,6 +56,9 @@ public class Gameplay extends AppCompatActivity {
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
         ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
+        ImageView slowcar1 = (ImageView) findViewById(R.id.slowcar1);
+        ImageView slowcar2 = (ImageView) findViewById(R.id.slowcar2);
+        ImageView slowcar3 = (ImageView) findViewById(R.id.slowcar3);
         TextView diff = (TextView) findViewById(R.id.diff);
         if (difficulty.getCheckedRadioButtonId() == easy.getId()) {
             heart2.setVisibility(View.VISIBLE);
@@ -75,6 +82,12 @@ public class Gameplay extends AppCompatActivity {
         // Background
         int numRoads = (int) (Math.random() * 2);
         backgroundCreate(numRoads);
+        carAnimation(slowcar1, 3000);
+        slowcar2.setX(slowcar2.getX() + 400);
+        carAnimation(slowcar2, 3000);
+        slowcar3.setX(slowcar3.getX() + 800);
+        carAnimation(slowcar3, 3000);
+        //ExecutorService executor
     }
 //    protected void difficultySelect() {
 //
@@ -134,10 +147,6 @@ public class Gameplay extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN: //when swipe started
                 downx = event.getX(); //gets x of swipe start
                 downy = event.getY(); //gets y of swipe start
-                outPX = 970;
-                outNX = -50;
-                outPY = 1900;
-                outNY = 800;
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
                 upx = event.getX(); //gets x of swipe end
@@ -177,5 +186,12 @@ public class Gameplay extends AppCompatActivity {
             score = score + 10;
             scoreText.setText("Score: " + score);
         }
+    }
+    public void carAnimation(ImageView car, long carSpeed) {
+        TranslateAnimation moveCar = new TranslateAnimation(100, -1200, 0, 0);
+        moveCar.setDuration(carSpeed);
+        moveCar.setFillAfter(true);
+        moveCar.setRepeatCount(-1);
+        car.startAnimation(moveCar);
     }
 }
