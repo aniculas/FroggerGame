@@ -8,7 +8,7 @@ public class Car {
     public Car(ImageView sprite) {
         this.sprite = sprite;
     }
-    public void move() {
+    public void moveLeft(int speed) {
         System.out.println(sprite.getX());
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
@@ -18,7 +18,26 @@ public class Car {
                 if(x < -50)
                     x = 960;
                 else
-                    x -= 6;
+                    x -= speed;
+                sprite.setX(x);
+
+                handler.postDelayed(this,0);
+            }
+        };
+        handler.post(runnable);
+    }
+
+    public void moveRight(int speed) {
+        System.out.println(sprite.getX());
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                float x = sprite.getX();
+                if(x > 960)
+                    x = -85;
+                else
+                    x += speed;
                 sprite.setX(x);
 
                 handler.postDelayed(this,0);
