@@ -27,13 +27,14 @@ public class Gameplay extends AppCompatActivity {
     float downx;
     float upy;
     float downy;
-    float outPX;
-    float outNX;
-    float outPY;
-    float outNY;
+    Player player;
     int maxHeight = 0;
     int height = 0;
     int score = 0;
+    int slowspeed = 6;
+    int medspeed = 8;
+    int fastspeed = 10;
+    boolean row5car = false;
 
 
     @Override
@@ -64,34 +65,74 @@ public class Gameplay extends AppCompatActivity {
             diff.setText("Hard");
         }
         if (spritepicker.getCheckedRadioButtonId() == green.getId()) {
-            playerspriteg.setVisibility(View.VISIBLE);
+            player = new Player(playerspriteg);
         } else if (spritepicker.getCheckedRadioButtonId() == red.getId()) {
-            playerspriter.setVisibility(View.VISIBLE);
+            player = new Player(playerspriter);
         } else if (spritepicker.getCheckedRadioButtonId() == blue.getId()) {
-            playerspriteb.setVisibility(View.VISIBLE);
+            player = new Player(playerspriteb);
         }
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
         // Background
-        int numRoads = (int) (Math.random() * 2);
+        int numRoads = (int) (Math.random() * 3);
         backgroundCreate(numRoads);
-    }
-//    protected void difficultySelect() {
-//
-//    }
-    protected void backgroundCreate(int numRoads) {
 
+    }
+
+    protected void backgroundCreate(int numRoads) {
+        ImageView slowcar1 = (ImageView) findViewById(R.id.slowcar1);
+        ImageView slowcar2 = (ImageView) findViewById(R.id.slowcar2);
+        ImageView slowcar3 = (ImageView) findViewById(R.id.slowcar3);
+        ImageView slowcar4 = (ImageView) findViewById(R.id.slowcar4);
+        ImageView slowcar5 = (ImageView) findViewById(R.id.slowcar5);
+        ImageView slowcar6 = (ImageView) findViewById(R.id.slowcar6);
+        ImageView medcar1 = (ImageView) findViewById(R.id.medcar1);
+        ImageView medcar2 = (ImageView) findViewById(R.id.medcar2);
+        ImageView medcar3 = (ImageView) findViewById(R.id.medcar3);
+        ImageView fastcar1 = (ImageView) findViewById(R.id.fastcar1);
+        ImageView fastcar2 = (ImageView) findViewById(R.id.fastcar2);
+        ImageView fastcar3 = (ImageView) findViewById(R.id.fastcar3);
+        ImageView fastcar4 = (ImageView) findViewById(R.id.fastcar4);
+        ImageView fastcar5 = (ImageView) findViewById(R.id.fastcar5);
+        ImageView fastcar6 = (ImageView) findViewById(R.id.fastcar6);
         ImageView safe = (ImageView) findViewById(R.id.safe);
         safe.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
         bg1.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
+        Car car1 = new Car(slowcar1);
+        Car car2 = new Car(slowcar2);
+        Car car3 = new Car(slowcar3);
+        car1.moveLeft(slowspeed);
+        car2.moveLeft(slowspeed);
+        car3.moveLeft(slowspeed);
         ImageView bg2 = (ImageView) findViewById(R.id.bg2);
         bg2.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
+        Car car4 = new Car (medcar1);
+        Car car5 = new Car (medcar2);
+        Car car6 = new Car (medcar3);
+        car4.moveLeft(medspeed);
+        car5.moveLeft(medspeed);
+        car6.moveLeft(medspeed);
         ImageView bg3 = (ImageView) findViewById(R.id.bg3);
         bg3.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
+        Car car7 = new Car(fastcar1);
+        Car car8 = new Car(fastcar2);
+        Car car9 = new Car(fastcar3);
+        car7.moveRight(fastspeed);
+        car8.moveRight(fastspeed);
+        car9.moveRight(fastspeed);
         ImageView bg4 = (ImageView) findViewById(R.id.bg4);
         if (numRoads > 0) {
             bg4.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
+            slowcar4.setVisibility(View.VISIBLE);
+            slowcar5.setVisibility(View.VISIBLE);
+            slowcar6.setVisibility(View.VISIBLE);
+            Car car10 = new Car(slowcar4);
+            Car car11 = new Car(slowcar5);
+            Car car12 = new Car(slowcar6);
+            car10.moveLeft(slowspeed);
+            car11.moveLeft(slowspeed);
+            car12.moveLeft(slowspeed);
         } else {
             bg4.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         }
@@ -102,6 +143,16 @@ public class Gameplay extends AppCompatActivity {
             bg5.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
             bg5.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
+            fastcar4.setVisibility(View.VISIBLE);
+            fastcar5.setVisibility(View.VISIBLE);
+            fastcar6.setVisibility(View.VISIBLE);
+            Car car13 = new Car(fastcar4);
+            Car car14 = new Car(fastcar5);
+            Car car15 = new Car(fastcar6);
+            car13.moveRight(fastspeed);
+            car14.moveRight(fastspeed);
+            car15.moveRight(fastspeed);
+            row5car = true;
         }
         ImageView bg6 = (ImageView) findViewById(R.id.bg6);
         if (numRoads == 2) {
@@ -114,66 +165,35 @@ public class Gameplay extends AppCompatActivity {
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
         bg8.setImageResource(getResources().getIdentifier("end_row_new", "drawable", getPackageName()));
     }
+
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
-        int yMovement = 120;
-        int xMovement = 109;
-        ImageView playersprite;
-        ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
-        ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
-        ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
-        if (playerspriteg.getVisibility() == View.VISIBLE) { //checks which sprite was selected
-            playersprite = playerspriteg;
-        } else if (playerspriter.getVisibility() == View.VISIBLE) {
-            playersprite = playerspriter;
-        } else {
-            playersprite = playerspriteb;
-        }
+    public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: //when swipe started
                 downx = event.getX(); //gets x of swipe start
                 downy = event.getY(); //gets y of swipe start
-                outPX = 970;
-                outNX = -50;
-                outPY = 1900;
-                outNY = 800;
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
                 upx = event.getX(); //gets x of swipe end
                 upy = event.getY(); //gets y of swipe end
-                float countPX = playersprite.getX() + xMovement;
-                float countNX = playersprite.getX() - xMovement;
-                float countPY = playersprite.getY() + yMovement;
-                float countNY = playersprite.getY() - yMovement;
-                float deltax = downx - upx;
-                float deltay = downy - upy;
-                if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
-                    if (downx > upx && countNX > outNX) { // checks if swipe was left to right
-                        playersprite.setX(playersprite.getX() - xMovement);
-                    }
-                    if (downx < upx && countPX < outPX){
-                        playersprite.setX(playersprite.getX() + xMovement);
-                    }
-                } else {
-                    if (downy > upy && countNY > outNY) { //checks if swipe was top to bottom
-                        playersprite.setY(playersprite.getY() - yMovement);
-                        height++;
-                        setScore();
-                    } if (downy < upy && (countPY < outPY)) {
-                        playersprite.setY(playersprite.getY() + yMovement);
-                        height--;
-                    }
-                }
+                height = player.move(upx, upy, downx, downy);
+                setScore();
                 break;
         }
 
         return super.onTouchEvent(event);
     }
+
     public void setScore() {
         TextView scoreText = (TextView) findViewById(R.id.score);
         if (maxHeight < height) {
             maxHeight = height;
+            if (height == 3) {
+                score = score + 5;
+            }
+            if (height == 4 || (height == 6 && row5car)) {
+                score = score + 10;
+            }
             score = score + 10;
             scoreText.setText("Score: " + score);
         }

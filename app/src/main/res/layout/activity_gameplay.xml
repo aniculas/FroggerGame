@@ -116,7 +116,7 @@
         android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/safe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -128,7 +128,7 @@
         android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -152,7 +152,7 @@
         android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -208,20 +208,6 @@
         tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/playerspriteg"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/frogg"
-        tools:visibility="visible" />
-
-    <ImageView
         android:id="@+id/playerspriter"
         android:layout_width="46dp"
         android:layout_height="46dp"
@@ -248,5 +234,210 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/frogb"
         tools:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/slowcar3"
+        android:layout_width="65dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.933"
+        app:srcCompat="@drawable/slowcar" />
+
+    <ImageView
+        android:id="@+id/slowcar2"
+        android:layout_width="65dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.933"
+        app:srcCompat="@drawable/slowcar" />
+
+    <ImageView
+        android:id="@+id/slowcar1"
+        android:layout_width="65dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.933"
+        app:srcCompat="@drawable/slowcar" />
+
+    <ImageView
+        android:id="@+id/slowcar4"
+        android:layout_width="65dp"
+        android:layout_height="39dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.734"
+        app:srcCompat="@drawable/slowcar"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/slowcar6"
+        android:layout_width="65dp"
+        android:layout_height="39dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.734"
+        app:srcCompat="@drawable/slowcar"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/fastcar1"
+        android:layout_width="52dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.799"
+        app:srcCompat="@drawable/redcar" />
+
+    <ImageView
+        android:id="@+id/fastcar5"
+        android:layout_width="52dp"
+        android:layout_height="42dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        app:srcCompat="@drawable/redcar"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/fastcar6"
+        android:layout_width="52dp"
+        android:layout_height="42dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        app:srcCompat="@drawable/redcar"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/fastcar4"
+        android:layout_width="52dp"
+        android:layout_height="42dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        app:srcCompat="@drawable/redcar"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/fastcar2"
+        android:layout_width="52dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.799"
+        app:srcCompat="@drawable/redcar" />
+
+    <ImageView
+        android:id="@+id/fastcar3"
+        android:layout_width="52dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.799"
+        app:srcCompat="@drawable/redcar" />
+
+    <ImageView
+        android:id="@+id/medcar3"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867"
+        app:srcCompat="@drawable/yellowcar" />
+
+    <ImageView
+        android:id="@+id/slowcar5"
+        android:layout_width="65dp"
+        android:layout_height="39dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.734"
+        app:srcCompat="@drawable/slowcar"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/medcar2"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867"
+        app:srcCompat="@drawable/yellowcar" />
+
+    <ImageView
+        android:id="@+id/medcar1"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867"
+        app:srcCompat="@drawable/yellowcar" />
+
+    <ImageView
+        android:id="@+id/playerspriteg"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/frogg"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
