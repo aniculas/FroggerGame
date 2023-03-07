@@ -126,6 +126,7 @@ public class Gameplay extends AppCompatActivity {
                 upx = event.getX(); //gets x of swipe end
                 upy = event.getY(); //gets y of swipe end
                 height = player.move(upx,upy,downx, downy);
+                setScore();
                 break;
         }
 
