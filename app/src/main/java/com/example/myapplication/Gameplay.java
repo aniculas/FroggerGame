@@ -75,10 +75,14 @@ public class Gameplay extends AppCompatActivity {
         // Background
         int numRoads = (int) (Math.random() * 2);
         backgroundCreate(numRoads);
+        Car car1 = new Car(slowcar1);
+        Car car2 = new Car(slowcar2);
+        Car car3 = new Car(slowcar3);
+        car1.move();
+        car2.move();
+        car3.move();
     }
-//    protected void difficultySelect() {
-//
-//    }
+
     protected void backgroundCreate(int numRoads) {
 
         ImageView safe = (ImageView) findViewById(R.id.safe);
@@ -114,9 +118,9 @@ public class Gameplay extends AppCompatActivity {
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
         bg8.setImageResource(getResources().getIdentifier("end_row_new", "drawable", getPackageName()));
     }
+
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
+    public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: //when swipe started
                 downx = event.getX(); //gets x of swipe start
@@ -125,13 +129,14 @@ public class Gameplay extends AppCompatActivity {
             case MotionEvent.ACTION_UP: //when swipe ended
                 upx = event.getX(); //gets x of swipe end
                 upy = event.getY(); //gets y of swipe end
-                height = player.move(upx,upy,downx, downy);
+                height = player.move(upx, upy, downx, downy);
                 setScore();
                 break;
         }
 
         return super.onTouchEvent(event);
     }
+
     public void setScore() {
         TextView scoreText = (TextView) findViewById(R.id.score);
         if (maxHeight < height) {
