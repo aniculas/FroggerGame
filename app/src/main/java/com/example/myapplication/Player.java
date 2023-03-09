@@ -13,10 +13,10 @@ public class Player {
         height = 0;
     }
     public int move(float upx, float upy, float downx, float downy) {
-        float outPX = 970;
-        float outNX = -50;
-        float outPY = 1900;
-        float outNY = 800;
+        final float outPX = 970;
+        final float outNX = -50;
+        final float outPY = 1900;
+        final float outNY = 800;
         int yMovement = 120;
         int xMovement = 109;
         float countPX = sprite.getX() + xMovement;
