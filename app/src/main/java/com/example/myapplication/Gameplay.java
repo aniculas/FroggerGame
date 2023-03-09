@@ -31,9 +31,9 @@ public class Gameplay extends AppCompatActivity {
     int maxHeight = 0;
     int height = 0;
     int score = 0;
-    int slowspeed = 6;
-    int medspeed = 8;
-    int fastspeed = 10;
+    final int slowspeed = 6;
+    final int medspeed = 8;
+    final int fastspeed = 10;
     boolean row5car = false;
 
 
