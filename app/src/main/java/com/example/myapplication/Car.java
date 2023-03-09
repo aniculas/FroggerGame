@@ -15,7 +15,7 @@ public class Car {
             @Override
             public void run() {
                 float x = sprite.getX();
-                if(x < -50)
+                if (x < -50)
                     x = 960;
                 else
                     x -= speed;

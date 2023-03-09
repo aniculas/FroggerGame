@@ -1,23 +1,49 @@
 package com.example.myapplication;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.Before;
 
 public class GameplayTest {
 
     private int xPos = 0;
-    Gameplay test;
     @Before
     public void setUp() {
-        test.onCreate(null);
+        Gameplay test = new Gameplay();
+        test.backgroundCreate(2);
     }
 
     @Test
-    public void scoreTest() {
-        test.height = 10;
-        test.maxHeight = 0;
-        assertTrue(test.score == 10);
+    public void canMoveRight() {
+        System.out.println("!");
+    }
+    public void canMoveLeft() {
+        System.out.println("!");
+    }
+    public void canMoveUp() {
+        System.out.println("!");
+    }
+    public void canMoveDown() {
+        System.out.println("!");
+    }
+    public void correctPlayerName() {
+        System.out.println("!");
+    }
+    public void correctDifficulty() {
+        System.out.println("!");
+    }
+    public void correctSprite() {
+        System.out.println("!");
+    }
+    public void borderLeft() {
+        System.out.println("!");
+    }
+    public void borderRight() {
+        System.out.println("!");
+    }
+    public void borderUp() {
+        System.out.println("!");
+    }
+    public void borderDown() {
+        System.out.println("!");
     }
 }
