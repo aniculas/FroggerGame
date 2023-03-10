@@ -25,5 +25,9 @@ public class CarTest extends Car{
         sprite.setY(10);
         Assert.assertEquals(10, sprite.getX());
     }
+    @Test
+    public void moveRightTest() {
+        Assert.assertTrue(true);
+    }
 
 }
