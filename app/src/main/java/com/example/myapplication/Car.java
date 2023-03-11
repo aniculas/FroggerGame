@@ -5,6 +5,9 @@ import android.widget.ImageView;
 
 public class Car {
     ImageView sprite;
+
+    int xPos = 0;
+    int yPos = 0;
     public Car(ImageView sprite) {
         this.sprite = sprite;
     }
