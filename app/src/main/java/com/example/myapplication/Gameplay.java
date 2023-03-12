@@ -190,6 +190,7 @@ public class Gameplay extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN: //when swipe started
                 downx = event.getRawX(); //gets x of swipe start
                 downy = event.getRawY(); //gets y of swipe start
+
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
 
@@ -201,7 +202,7 @@ public class Gameplay extends AppCompatActivity {
                 sprite.sprite.setY(position[1]);
 //                playerSprite.setX(position[0]);
 //                playerSprite.setY(position[0]);
-
+                //swipeValue(downx,downy,upx,upy);
                 setScore();
                 break;
         }
@@ -212,21 +213,10 @@ public class Gameplay extends AppCompatActivity {
     public void setScore() {
         TextView scoreText = (TextView) findViewById(R.id.score);
         score = player.scoreReturn(row5car);
-        scoreText.setText("x:"+sprite.sprite.getX());
-//        if (player.maxHeight < player.height) {
-//            scoreText.setText("Score: " + score);
-//        }
-//        if (maxHeight < height) {
-//            maxHeight = height;
-//            if (height == 3) {
-//                score = score + 5;
-//            }
-//            if (height == 4 || (height == 6 && row5car)) {
-//                score = score + 10;
-//            }
-//            score = score + 10;
-//            scoreText.setText("Score: " + score);
-//        }
-
+        scoreText.setText("Score: " + player.score);
+    }
+    public void swipeValue(float downx, float downy, float upx, float upy) {
+        TextView swipeNums = (TextView) findViewById(R.id.score);
+        swipeNums.setText(downx +", "+downy +", "+upx +", "+upy);
     }
 }

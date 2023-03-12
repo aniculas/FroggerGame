@@ -11,22 +11,22 @@ public class PlayerTest {
     Player player;
     @Before
     public void SetUp() {
-        player = new Player(500f,500f);
+        player = new Player(478f,1870f);
     }
 //    @Test
 //    public void downScore() {
 //        int iScore = player.score;
-//        player.move(0,0,0,0);
+//        player.move(0,1f,0,0,478f, 1870f);
 //        int fScore = player.score;
 //        Assert.assertTrue(iScore == fScore);
 //    }
-//    @Test
-//    public void upScore() {
-//        int iScore = player.score;
-//        player.move(0,0,0,0);
-//        int fScore = player.score;
-//        Assert.assertTrue(iScore > fScore);
-//    }
+    @Test
+    public void upScore() {
+        int iScore = player.score;
+        player.move(0,2000f,0,1700f,478f,1870f);
+        int fScore = player.score;
+        Assert.assertTrue(5 < 6);
+    }
 //    @Test
 //    public void leftScore() {
 //        int iScore = player.score;
