@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,6 +29,7 @@ public class Gameplay extends AppCompatActivity {
     float upy;
     float downy;
     Player player;
+    Sprite sprite;
     int maxHeight = 0;
     int height = 0;
     int score = 0;
@@ -35,6 +37,9 @@ public class Gameplay extends AppCompatActivity {
     final int medspeed = 8;
     final int fastspeed = 10;
     boolean row5car = false;
+    int playerID;
+    float[] position;
+    ImageView playerSprite;
 
 
     @Override
@@ -65,11 +70,20 @@ public class Gameplay extends AppCompatActivity {
             diff.setText("Hard");
         }
         if (spritepicker.getCheckedRadioButtonId() == green.getId()) {
-            player = new Player(playerspriteg);
+            //player = new Player(playerspriteg);
+            sprite = new Sprite(playerspriteg);
+            player = new Player(sprite.sprite.getX(), sprite.sprite.getY());
+            playerspriteg.setVisibility(View.VISIBLE);
         } else if (spritepicker.getCheckedRadioButtonId() == red.getId()) {
-            player = new Player(playerspriter);
+            //player = new Player(playerspriter);
+            sprite = new Sprite(playerspriter);
+            player = new Player(sprite.sprite.getX(), sprite.sprite.getY());
+            playerspriter.setVisibility(View.VISIBLE);
         } else if (spritepicker.getCheckedRadioButtonId() == blue.getId()) {
-            player = new Player(playerspriteb);
+            //player = new Player(playerspriteb);
+            sprite = new Sprite(playerspriteb);
+            player = new Player(sprite.sprite.getX(), sprite.sprite.getY());
+            playerspriteb.setVisibility(View.VISIBLE);
         }
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
@@ -95,6 +109,8 @@ public class Gameplay extends AppCompatActivity {
         ImageView fastcar4 = (ImageView) findViewById(R.id.fastcar4);
         ImageView fastcar5 = (ImageView) findViewById(R.id.fastcar5);
         ImageView fastcar6 = (ImageView) findViewById(R.id.fastcar6);
+
+
         ImageView safe = (ImageView) findViewById(R.id.safe);
         safe.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
@@ -165,18 +181,28 @@ public class Gameplay extends AppCompatActivity {
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
         bg8.setImageResource(getResources().getIdentifier("end_row_new", "drawable", getPackageName()));
     }
+    public void carCreate() {
+
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: //when swipe started
-                downx = event.getX(); //gets x of swipe start
-                downy = event.getY(); //gets y of swipe start
+                downx = event.getRawX(); //gets x of swipe start
+                downy = event.getRawY(); //gets y of swipe start
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
-                upx = event.getX(); //gets x of swipe end
-                upy = event.getY(); //gets y of swipe end
-                height = player.move(upx, upy, downx, downy);
+
+                upx = event.getRawX(); //gets x of swipe end
+                upy = event.getRawY(); //gets y of swipe end
+                position = player.move(upx, upy, downx, downy);
+                height = player.height;
+                sprite.sprite.setX(position[0]);
+                sprite.sprite.setY(position[1]);
+//                playerSprite.setX(position[0]);
+//                playerSprite.setY(position[0]);
+
                 setScore();
                 break;
         }
@@ -186,16 +212,22 @@ public class Gameplay extends AppCompatActivity {
 
     public void setScore() {
         TextView scoreText = (TextView) findViewById(R.id.score);
-        if (maxHeight < height) {
-            maxHeight = height;
-            if (height == 3) {
-                score = score + 5;
-            }
-            if (height == 4 || (height == 6 && row5car)) {
-                score = score + 10;
-            }
-            score = score + 10;
-            scoreText.setText("Score: " + score);
-        }
+        score = player.scoreReturn(row5car);
+        scoreText.setText("x:"+sprite.sprite.getX());
+//        if (player.maxHeight < player.height) {
+//            scoreText.setText("Score: " + score);
+//        }
+//        if (maxHeight < height) {
+//            maxHeight = height;
+//            if (height == 3) {
+//                score = score + 5;
+//            }
+//            if (height == 4 || (height == 6 && row5car)) {
+//                score = score + 10;
+//            }
+//            score = score + 10;
+//            scoreText.setText("Score: " + score);
+//        }
+
     }
 }

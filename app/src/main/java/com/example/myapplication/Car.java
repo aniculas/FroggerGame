@@ -8,6 +8,8 @@ public class Car {
 
     int xPos = 0;
     int yPos = 0;
+
+
     public Car(ImageView sprite) {
         this.sprite = sprite;
     }
@@ -18,6 +20,7 @@ public class Car {
             @Override
             public void run() {
                 float x = sprite.getX();
+
                 if (x < -50)
                     x = 960;
                 else
@@ -29,7 +32,9 @@ public class Car {
         };
         handler.post(runnable);
     }
-
+    public int test() {
+        return 5;
+    }
     public void moveRight(int speed) {
         System.out.println(sprite.getX());
         final Handler handler = new Handler();

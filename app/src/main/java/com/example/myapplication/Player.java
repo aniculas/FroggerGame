@@ -6,41 +6,82 @@ import android.widget.ImageView;
 public class Player {
     ImageView sprite;
     int height;
-
-    public Player (ImageView sprite) {
-        this.sprite = sprite;
-        sprite.setVisibility(View.VISIBLE);
+    int maxHeight;
+    int score;
+    float xPos;
+    float yPos;
+    float[] position = new float[2];
+    public Player(float xPos, float yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
         height = 0;
+        position[0] = xPos;
+        position[1] = yPos;
     }
-    public int move(float upx, float upy, float downx, float downy) {
+
+//    public Player (ImageView sprite) {
+//        this.sprite = sprite;
+//        sprite.setVisibility(View.VISIBLE);
+//        height = 0;
+//    }
+
+    public float[] move(float upx, float upy, float downx, float downy) {
         final float outPX = 970;
         final float outNX = -50;
         final float outPY = 1900;
         final float outNY = 800;
         int yMovement = 120;
         int xMovement = 109;
-        float countPX = sprite.getX() + xMovement;
-        float countNX = sprite.getX() - xMovement;
-        float countPY = sprite.getY() + yMovement;
-        float countNY = sprite.getY() - yMovement;
+        float countPX = xPos + xMovement;
+        float countNX = xPos - xMovement;
+        float countPY = yPos + yMovement;
+        float countNY = yPos - yMovement;
+//        float countPX = sprite.getX() + xMovement;
+//        float countNX = sprite.getX() - xMovement;
+//        float countPY = sprite.getY() + yMovement;
+//        float countNY = sprite.getY() - yMovement;
         float deltax = downx - upx;
         float deltay = downy - upy;
         if (Math.abs(deltax) > Math.abs(deltay)) { //checks if swipe was vertical or horizontal
             if (downx > upx && countNX > outNX) { // checks if swipe was left to right
-                sprite.setX(sprite.getX() - xMovement);
+                //sprite.setX(sprite.getX() - xMovement);
+                xPos -= xMovement;
+                position[0] = xPos;
             }
             if (downx < upx && countPX < outPX){
-                sprite.setX(sprite.getX() + xMovement);
+                //sprite.setX(sprite.getX() + xMovement);
+                xPos += xMovement;
+                position[0] = xPos;
             }
         } else {
             if (downy > upy && countNY > outNY) { //checks if swipe was top to bottom
-                sprite.setY(sprite.getY() - yMovement);
+                //sprite.setY(sprite.getY() - yMovement);
+                yPos -= yMovement;
+                position[1] = yPos;
                 height++;
             } if (downy < upy && (countPY < outPY)) {
-                sprite.setY(sprite.getY() + yMovement);
+                //sprite.setY(sprite.getY() + yMovement);
+                yPos += yMovement;
+                position[1] = yPos;
                 height--;
             }
         }
-        return height;
+        return position;
+        //return nextPlace;
+        //return height;
+    }
+    public int scoreReturn(boolean row5car) {
+        if (maxHeight < height) {
+            maxHeight = height;
+            if (height == 3) {
+                score = score + 5;
+            }
+            if (height == 4 || (height == 6 && row5car)) {
+                score = score + 10;
+            }
+            score = score + 10;
+
+        }
+        return score;
     }
 }
