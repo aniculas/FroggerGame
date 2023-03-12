@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Player {
-    ImageView sprite;
+    //ImageView sprite;
     int height;
     int maxHeight;
     int score;
@@ -15,8 +15,8 @@ public class Player {
         this.xPos = xPos;
         this.yPos = yPos;
         height = 0;
-        position[0] = xPos;
-        position[1] = yPos;
+        position[0] = 478f;
+        position[1] = 1870f;
     }
 
 //    public Player (ImageView sprite) {
@@ -25,7 +25,9 @@ public class Player {
 //        height = 0;
 //    }
 
-    public float[] move(float upx, float upy, float downx, float downy) {
+    public float[] move(float upx, float upy, float downx, float downy, float currX, float currY) {
+        xPos = currX;
+        yPos = currY;
         final float outPX = 970;
         final float outNX = -50;
         final float outPY = 1900;
@@ -67,7 +69,6 @@ public class Player {
             }
         }
         return position;
-        //return nextPlace;
         //return height;
     }
     public int scoreReturn(boolean row5car) {

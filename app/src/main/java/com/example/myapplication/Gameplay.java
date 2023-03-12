@@ -59,6 +59,7 @@ public class Gameplay extends AppCompatActivity {
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
         ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
         TextView diff = (TextView) findViewById(R.id.diff);
+        //SET HEARTS---------------------------------------------------------------------------
         if (difficulty.getCheckedRadioButtonId() == easy.getId()) {
             heart2.setVisibility(View.VISIBLE);
             heart3.setVisibility(View.VISIBLE);
@@ -69,6 +70,7 @@ public class Gameplay extends AppCompatActivity {
         } else {
             diff.setText("Hard");
         }
+        //SET SPRITE---------------------------------------------------------------------------
         if (spritepicker.getCheckedRadioButtonId() == green.getId()) {
             //player = new Player(playerspriteg);
             sprite = new Sprite(playerspriteg);
@@ -94,6 +96,7 @@ public class Gameplay extends AppCompatActivity {
     }
 
     protected void backgroundCreate(int numRoads) {
+
         ImageView slowcar1 = (ImageView) findViewById(R.id.slowcar1);
         ImageView slowcar2 = (ImageView) findViewById(R.id.slowcar2);
         ImageView slowcar3 = (ImageView) findViewById(R.id.slowcar3);
@@ -109,7 +112,6 @@ public class Gameplay extends AppCompatActivity {
         ImageView fastcar4 = (ImageView) findViewById(R.id.fastcar4);
         ImageView fastcar5 = (ImageView) findViewById(R.id.fastcar5);
         ImageView fastcar6 = (ImageView) findViewById(R.id.fastcar6);
-
 
         ImageView safe = (ImageView) findViewById(R.id.safe);
         safe.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
@@ -181,9 +183,6 @@ public class Gameplay extends AppCompatActivity {
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
         bg8.setImageResource(getResources().getIdentifier("end_row_new", "drawable", getPackageName()));
     }
-    public void carCreate() {
-
-    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -196,7 +195,7 @@ public class Gameplay extends AppCompatActivity {
 
                 upx = event.getRawX(); //gets x of swipe end
                 upy = event.getRawY(); //gets y of swipe end
-                position = player.move(upx, upy, downx, downy);
+                position = player.move(upx, upy, downx, downy, sprite.sprite.getX(),sprite.sprite.getY());
                 height = player.height;
                 sprite.sprite.setX(position[0]);
                 sprite.sprite.setY(position[1]);
