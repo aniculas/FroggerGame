@@ -46,7 +46,7 @@ public class PlayerTest {
         Assert.assertTrue(iScore == fScore);
     }
     @Test
-    public void fastPoints(){
+    public void fastlanePoints(){
         int eScore = 35;
         player.move(0,0,0,100f,478f, 1870f);
         player.scoreReturn(false);
@@ -54,6 +54,36 @@ public class PlayerTest {
         player.scoreReturn(false);
         player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(false);
+        int fScore = player.score;
+        Assert.assertTrue(eScore == fScore);
+    }
+    @Test
+    public void returnToPreviousRowNoPoints() {
+        player.move(0,0,0,100f,478f,1870f);
+        int iScore = player.scoreReturn(false);
+        player.move(0,100f,0,0,player.xPos,player.yPos);
+        int fScore = player.scoreReturn(false);
+        Assert.assertTrue(iScore == fScore);
+    }
+    @Test
+    public void multFastLanePoints() {
+        int eScore = 105;
+        player.move(0,0,0,100f,478f, 1870f);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,478f, 1870f);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,478f, 1870f);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
+        player.scoreReturn(true);
         int fScore = player.score;
         Assert.assertTrue(eScore == fScore);
     }
