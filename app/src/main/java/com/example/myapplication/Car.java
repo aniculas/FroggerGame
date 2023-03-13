@@ -6,11 +6,9 @@ import android.widget.ImageView;
 public class Car {
     ImageView sprite;
 
-    int xPos = 0;
-    int yPos = 0;
-    int slow = 6;
-    int medium = 8;
-    int fast = 10;
+    int slow = 2;
+    int medium = 4;
+    int fast = 6;
     int speed;
     int direction;
 
@@ -35,8 +33,8 @@ public class Car {
                 public void run() {
                     float x = sprite.getX();
 
-                    if (x < -50)
-                        x = 960;
+                    if (x < -100)
+                        x = 1000;
                     else
                         x -= speed;
                     sprite.setX(x);
@@ -52,8 +50,8 @@ public class Car {
                 @Override
                 public void run() {
                     float x = sprite.getX();
-                    if(x > 960)
-                        x = -85;
+                    if(x > 1000)
+                        x = -100;
                     else
                         x += speed;
                     sprite.setX(x);

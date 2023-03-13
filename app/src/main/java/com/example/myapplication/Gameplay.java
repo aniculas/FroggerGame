@@ -30,16 +30,11 @@ public class Gameplay extends AppCompatActivity {
     float downy;
     Player player;
     Sprite sprite;
-    int maxHeight = 0;
     int height = 0;
     int score = 0;
-    final int slowspeed = 6;
-    final int medspeed = 8;
-    final int fastspeed = 10;
     boolean row5car = false;
     int playerID;
     float[] position;
-    ImageView playerSprite;
 
 
     @Override
