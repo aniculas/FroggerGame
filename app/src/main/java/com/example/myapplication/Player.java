@@ -31,7 +31,7 @@ public class Player {
         final float outPX = 970;
         final float outNX = -50;
         final float outPY = 1900;
-        final float outNY = 800;
+        final float outNY = 650;
         int yMovement = 120;
         int xMovement = 109;
         float countPX = xPos + xMovement;

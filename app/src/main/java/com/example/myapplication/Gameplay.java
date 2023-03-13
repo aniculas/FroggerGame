@@ -114,9 +114,7 @@ public class Gameplay extends AppCompatActivity {
         ImageView fastcar6 = (ImageView) findViewById(R.id.fastcar6);
 
         ImageView safe = (ImageView) findViewById(R.id.safe);
-        safe.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
-        bg1.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
         Car car1 = new Car(slowcar1, 0,0);
         Car car2 = new Car(slowcar2, 0,0);
         Car car3 = new Car(slowcar3, 0,0);
@@ -124,7 +122,6 @@ public class Gameplay extends AppCompatActivity {
         car2.move();
         car3.move();
         ImageView bg2 = (ImageView) findViewById(R.id.bg2);
-        bg2.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
         Car car4 = new Car (medcar1, 1,0);
         Car car5 = new Car (medcar2,1,0);
         Car car6 = new Car (medcar3,1,0);
@@ -132,7 +129,6 @@ public class Gameplay extends AppCompatActivity {
         car5.move();
         car6.move();
         ImageView bg3 = (ImageView) findViewById(R.id.bg3);
-        bg3.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
         Car car7 = new Car(fastcar1, 2,1);
         Car car8 = new Car(fastcar2,2,1);
         Car car9 = new Car(fastcar3,2,1);
@@ -179,9 +175,9 @@ public class Gameplay extends AppCompatActivity {
             bg6.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
         }
         ImageView bg7 = (ImageView) findViewById(R.id.bg7);
-        bg7.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
-        bg8.setImageResource(getResources().getIdentifier("end_row_new", "drawable", getPackageName()));
+        ImageView bg9 = (ImageView) findViewById(R.id.bg9);
+        ImageView bg10 = (ImageView) findViewById(R.id.bg10);
     }
 
     @Override

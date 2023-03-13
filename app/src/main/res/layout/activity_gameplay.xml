@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/heart3"
-        android:layout_width="49dp"
-        android:layout_height="73dp"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
         android:layout_marginStart="108dp"
         android:layout_marginBottom="462dp"
         android:visibility="invisible"
@@ -25,8 +25,8 @@
 
     <ImageView
         android:id="@+id/heart2"
-        android:layout_width="48dp"
-        android:layout_height="72dp"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,8 +39,8 @@
 
     <ImageView
         android:id="@+id/heart1"
-        android:layout_width="47dp"
-        android:layout_height="72dp"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -108,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/black" />
+        app:srcCompat="@drawable/grass_row" />
 
     <ImageView
         android:id="@+id/bg1"
@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/black" />
+        app:srcCompat="@drawable/road_row" />
 
     <ImageView
         android:id="@+id/bg2"
@@ -132,7 +132,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/black" />
+        app:srcCompat="@drawable/road_row" />
 
     <ImageView
         android:id="@+id/bg3"
@@ -144,7 +144,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/black" />
+        app:srcCompat="@drawable/road_row" />
 
     <ImageView
         android:id="@+id/bg4"
@@ -192,19 +192,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/black" />
+        app:srcCompat="@drawable/river_row_new" />
 
     <ImageView
         android:id="@+id/bg8"
         android:layout_width="411dp"
-        android:layout_height="68dp"
+        android:layout_height="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bg7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/black"
+        app:srcCompat="@drawable/river_row_new"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/bg9"
+        android:layout_width="411dp"
+        android:layout_height="46dp"
+        app:layout_constraintBottom_toTopOf="@+id/bg8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/river_row_new"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/bg10"
+        android:layout_width="411dp"
+        android:layout_height="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/bg9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/end_row_new"
         tools:visibility="visible" />
 
     <ImageView

@@ -40,10 +40,10 @@ public class PlayerTest {
     @Test
     public void rightScore() {
         int iScore = player.score;
-        player.move(0,0,0,100f,478f, 1870f);
+        player.move(0,0,100f,0,478f, 1870f);
         player.scoreReturn(false);
         int fScore = player.score;
-        Assert.assertTrue(iScore == fScore);
+        assertEquals(iScore, fScore);
     }
     @Test
     public void fastlanePoints(){
@@ -62,29 +62,35 @@ public class PlayerTest {
         player.move(0,0,0,100f,478f,1870f);
         int iScore = player.scoreReturn(false);
         player.move(0,100f,0,0,player.xPos,player.yPos);
+        player.scoreReturn(false);
+        player.move(0, 0, 0, 100f, player.xPos, player.yPos);
         int fScore = player.scoreReturn(false);
         Assert.assertTrue(iScore == fScore);
     }
     @Test
     public void multFastLanePoints() {
-        int eScore = 105;
+        int eScore = 125;
         player.move(0,0,0,100f,478f, 1870f);
         player.scoreReturn(true);
         player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(true);
         player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(true);
-        player.move(0,0,0,100f,478f, 1870f);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(true);
         player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(true);
         player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(true);
-        player.move(0,0,0,100f,478f, 1870f);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
+        player.scoreReturn(true);
+        player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(true);
         player.move(0,0,0,100f,player.xPos, player.yPos);
         player.scoreReturn(true);
         int fScore = player.score;
-        Assert.assertTrue(eScore == fScore);
+        assertEquals(eScore, fScore);
     }
 }
