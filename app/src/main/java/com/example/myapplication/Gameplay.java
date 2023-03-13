@@ -117,40 +117,40 @@ public class Gameplay extends AppCompatActivity {
         safe.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
         bg1.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
-        Car car1 = new Car(slowcar1);
-        Car car2 = new Car(slowcar2);
-        Car car3 = new Car(slowcar3);
-        car1.moveLeft(slowspeed);
-        car2.moveLeft(slowspeed);
-        car3.moveLeft(slowspeed);
+        Car car1 = new Car(slowcar1, 0,0);
+        Car car2 = new Car(slowcar2, 0,0);
+        Car car3 = new Car(slowcar3, 0,0);
+        car1.move();
+        car2.move();
+        car3.move();
         ImageView bg2 = (ImageView) findViewById(R.id.bg2);
         bg2.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
-        Car car4 = new Car (medcar1);
-        Car car5 = new Car (medcar2);
-        Car car6 = new Car (medcar3);
-        car4.moveLeft(medspeed);
-        car5.moveLeft(medspeed);
-        car6.moveLeft(medspeed);
+        Car car4 = new Car (medcar1, 1,0);
+        Car car5 = new Car (medcar2,1,0);
+        Car car6 = new Car (medcar3,1,0);
+        car4.move();
+        car5.move();
+        car6.move();
         ImageView bg3 = (ImageView) findViewById(R.id.bg3);
         bg3.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
-        Car car7 = new Car(fastcar1);
-        Car car8 = new Car(fastcar2);
-        Car car9 = new Car(fastcar3);
-        car7.moveRight(fastspeed);
-        car8.moveRight(fastspeed);
-        car9.moveRight(fastspeed);
+        Car car7 = new Car(fastcar1, 2,1);
+        Car car8 = new Car(fastcar2,2,1);
+        Car car9 = new Car(fastcar3,2,1);
+        car7.move();
+        car8.move();
+        car9.move();
         ImageView bg4 = (ImageView) findViewById(R.id.bg4);
         if (numRoads > 0) {
             bg4.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
             slowcar4.setVisibility(View.VISIBLE);
             slowcar5.setVisibility(View.VISIBLE);
             slowcar6.setVisibility(View.VISIBLE);
-            Car car10 = new Car(slowcar4);
-            Car car11 = new Car(slowcar5);
-            Car car12 = new Car(slowcar6);
-            car10.moveLeft(slowspeed);
-            car11.moveLeft(slowspeed);
-            car12.moveLeft(slowspeed);
+            Car car10 = new Car(slowcar4,0, 0);
+            Car car11 = new Car(slowcar5,0, 0);
+            Car car12 = new Car(slowcar6,0, 0);
+            car10.move();
+            car11.move();
+            car12.move();
         } else {
             bg4.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         }
@@ -164,12 +164,12 @@ public class Gameplay extends AppCompatActivity {
             fastcar4.setVisibility(View.VISIBLE);
             fastcar5.setVisibility(View.VISIBLE);
             fastcar6.setVisibility(View.VISIBLE);
-            Car car13 = new Car(fastcar4);
-            Car car14 = new Car(fastcar5);
-            Car car15 = new Car(fastcar6);
-            car13.moveRight(fastspeed);
-            car14.moveRight(fastspeed);
-            car15.moveRight(fastspeed);
+            Car car13 = new Car(fastcar4, 2, 1);
+            Car car14 = new Car(fastcar5, 2, 1);
+            Car car15 = new Car(fastcar6, 2, 1);
+            car13.move();
+            car14.move();
+            car15.move();
             row5car = true;
         }
         ImageView bg6 = (ImageView) findViewById(R.id.bg6);
@@ -218,5 +218,8 @@ public class Gameplay extends AppCompatActivity {
     public void swipeValue(float downx, float downy, float upx, float upy) {
         TextView swipeNums = (TextView) findViewById(R.id.score);
         swipeNums.setText(downx +", "+downy +", "+upx +", "+upy);
+    }
+    public void carRun() {
+
     }
 }

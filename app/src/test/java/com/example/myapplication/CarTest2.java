@@ -21,18 +21,21 @@ public class CarTest2 {
 
     @Before
     public void setUp() {
-        //sprite = (ImageView) gameplay.findViewById(R.id.frogb);
-//        sprite.setImageResource(R.drawable.frogb); // still running into the issue that sprite is initially null
-
-//        sprite = (ImageView) main.findViewById(R.id.frogb);
-        //car = new Car();
     }
     @Test
-    public void moveRight() {
-
-        int test = car.test();
-        //car.moveLeft(10);
-        Assert.assertEquals(test, 5);
+    public void startRight() {
+        car = new Car(null, 0,0);
+        Assert.assertEquals(0, car.direction);
+    }
+    @Test
+    public void startLeft() {
+        car = new Car(null, 0,1);
+        Assert.assertEquals(1, car.direction);
+    }
+    @Test
+    public void correctSpeed() {
+        car = new Car(null, 0,0);
+        Assert.assertEquals(6, car.speed);
     }
 
 }
