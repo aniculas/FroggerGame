@@ -25,6 +25,13 @@ public class Player {
 //        height = 0;
 //    }
 
+    public float[] resetPosition() {
+        xPos = 478f;
+        yPos = 1870f;
+        position[0] = xPos;
+        position[1] = yPos;
+        return position;
+    }
     public float[] move(float upx, float upy, float downx, float downy, float currX, float currY) {
         xPos = currX;
         yPos = currY;
@@ -71,18 +78,25 @@ public class Player {
         return position;
         //return height;
     }
-    public int scoreReturn(boolean row5car) {
-        if (maxHeight < height) {
+    public int scoreReturn(int numRoads) {
+        int temp = 0;
+        if (height >= (numRoads + 2)) {
+            height = 0;
+            maxHeight = 0;
+            return -score;
+        } else if (maxHeight < height) {
             maxHeight = height;
             if (height == 3) {
-                score = score + 5;
+                score += 5;
+                temp += 5;
             }
-            if (height == 4 || (height == 6 && row5car)) {
-                score = score + 10;
+            if (height == 4 || (height == 6 && (numRoads == 5))) {
+                score += 10;
+                temp += 10;
             }
-            score = score + 10;
-
+            score += 10;
+            temp += 10;
         }
-        return score;
+        return temp;
     }
 }

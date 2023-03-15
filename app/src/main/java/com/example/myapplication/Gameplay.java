@@ -9,7 +9,9 @@ import static com.example.myapplication.Config.getMedium;
 import static com.example.myapplication.Config.getName;
 import static com.example.myapplication.Config.getRed;
 import static com.example.myapplication.Config.getSprite;
+import static com.example.myapplication.End.scoreText;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,9 +34,11 @@ public class Gameplay extends AppCompatActivity {
     Sprite sprite;
     int height = 0;
     int score = 0;
-    boolean row5car = false;
+    int numRoads;
     int playerID;
     float[] position;
+    ImageView heart2;
+    ImageView heart3;
 
 
     @Override
@@ -48,8 +52,8 @@ public class Gameplay extends AppCompatActivity {
         RadioButton green = getGreen();
         RadioButton blue = getBlue();
         RadioButton red = getRed();
-        ImageView heart2 = (ImageView) findViewById(R.id.heart2);
-        ImageView heart3 = (ImageView) findViewById(R.id.heart3);
+        heart2 = (ImageView) findViewById(R.id.heart2);
+        heart3 = (ImageView) findViewById(R.id.heart3);
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
         ImageView playerspriter = (ImageView) findViewById(R.id.playerspriter);
         ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
@@ -85,7 +89,7 @@ public class Gameplay extends AppCompatActivity {
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
         // Background
-        int numRoads = (int) (Math.random() * 3);
+        numRoads = (int) (Math.random() * 3) + 3;
         backgroundCreate(numRoads);
 
     }
@@ -131,7 +135,7 @@ public class Gameplay extends AppCompatActivity {
         car8.move();
         car9.move();
         ImageView bg4 = (ImageView) findViewById(R.id.bg4);
-        if (numRoads > 0) {
+        if (numRoads > 3) {
             bg4.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
             slowcar4.setVisibility(View.VISIBLE);
             slowcar5.setVisibility(View.VISIBLE);
@@ -146,9 +150,9 @@ public class Gameplay extends AppCompatActivity {
             bg4.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         }
         ImageView bg5 = (ImageView) findViewById(R.id.bg5);
-        if (numRoads == 0) {
+        if (numRoads == 3) {
             bg5.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
-        } else if (numRoads == 1) {
+        } else if (numRoads == 4) {
             bg5.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
             bg5.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
@@ -161,10 +165,9 @@ public class Gameplay extends AppCompatActivity {
             car13.move();
             car14.move();
             car15.move();
-            row5car = true;
         }
         ImageView bg6 = (ImageView) findViewById(R.id.bg6);
-        if (numRoads == 2) {
+        if (numRoads == 5) {
             bg6.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
             bg6.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
@@ -203,8 +206,28 @@ public class Gameplay extends AppCompatActivity {
 
     public void setScore() {
         TextView scoreText = (TextView) findViewById(R.id.score);
-        score = player.scoreReturn(row5car);
+        int temp = player.scoreReturn(numRoads);
+        score += temp;
+        if (temp < 0) {
+            reduceLife();
+        }
         scoreText.setText("Score: " + player.score);
+    }
+    public void reduceLife() {
+        player.score = 0;
+        position = player.resetPosition();
+        height = player.height;
+        sprite.sprite.setX(position[0]);
+        sprite.sprite.setY(position[1]);
+        if (heart3.getVisibility() == View.VISIBLE) {
+            heart3.setVisibility(View.INVISIBLE);
+        } else if (heart2.getVisibility() == View.VISIBLE) {
+            heart2.setVisibility(View.INVISIBLE);
+        } else {
+            scoreText.append(score + "");
+            Intent nextScreen = new Intent(Gameplay.this, End.class);
+            startActivity(nextScreen);
+        }
     }
     public void swipeValue(float downx, float downy, float upx, float upy) {
         TextView swipeNums = (TextView) findViewById(R.id.score);
