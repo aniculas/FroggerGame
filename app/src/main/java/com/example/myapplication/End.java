@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.Gameplay.getScore;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ public class End extends AppCompatActivity {
         setContentView(R.layout.activity_end);
 
         scoreText = (TextView) findViewById(R.id.score);
+        scoreText.setText("Final Score: " + getScore());
         Button restart = (Button) findViewById(R.id.restart);
         restart.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -33,7 +33,7 @@ public class Gameplay extends AppCompatActivity {
     Player player;
     Sprite sprite;
     int height = 0;
-    int score = 0;
+    static int score = 0;
     int numRoads;
     int playerID;
     float[] position;
@@ -214,17 +214,22 @@ public class Gameplay extends AppCompatActivity {
         scoreText.setText("Score: " + player.score);
     }
     public void reduceLife() {
-        player.score = 0;
-        position = player.resetPosition();
-        height = player.height;
-        sprite.sprite.setX(position[0]);
-        sprite.sprite.setY(position[1]);
         if (heart3.getVisibility() == View.VISIBLE) {
             heart3.setVisibility(View.INVISIBLE);
+            player.score = 0;
+            position = player.resetPosition();
+            height = player.height;
+            sprite.sprite.setX(position[0]);
+            sprite.sprite.setY(position[1]);
         } else if (heart2.getVisibility() == View.VISIBLE) {
             heart2.setVisibility(View.INVISIBLE);
+            player.score = 0;
+            position = player.resetPosition();
+            height = player.height;
+            sprite.sprite.setX(position[0]);
+            sprite.sprite.setY(position[1]);
         } else {
-            scoreText.append(score + "");
+            score = player.score;
             Intent nextScreen = new Intent(Gameplay.this, End.class);
             startActivity(nextScreen);
         }
@@ -235,5 +240,8 @@ public class Gameplay extends AppCompatActivity {
     }
     public void carRun() {
 
+    }
+    public static int getScore() {
+        return score;
     }
 }
