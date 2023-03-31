@@ -51,6 +51,7 @@ public class Config extends AppCompatActivity {
             return false;
         } else {
             Intent nextScreen = new Intent(Config.this, Gameplay.class);
+            finish();
             startActivity(nextScreen);
             return true;
         }

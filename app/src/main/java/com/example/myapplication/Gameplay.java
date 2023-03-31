@@ -231,6 +231,7 @@ public class Gameplay extends AppCompatActivity {
         } else {
             score = player.score;
             Intent nextScreen = new Intent(Gameplay.this, End.class);
+            finish();
             startActivity(nextScreen);
         }
     }
