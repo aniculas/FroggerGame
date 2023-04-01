@@ -25,6 +25,7 @@ public class End extends AppCompatActivity {
             // Takes the player to config screen on button press
             public void onClick(View view) {
                 Intent nextScreen = new Intent(End.this, Config.class);
+                finish();
                 startActivity(nextScreen);
             }
         });
