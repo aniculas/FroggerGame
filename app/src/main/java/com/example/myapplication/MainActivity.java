@@ -3,17 +3,17 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+/* Old Button Checker
         Button start = (Button) findViewById(R.id.start);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +32,19 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
+ */
+    }
+
+    @Override
+    public void playGame(View view) {
+        Intent nextScreen = new Intent(MainActivity.this, Config.class);
+        finish();
+        startActivity(nextScreen);
+    }
+
+    @Override
+    public void exitGame(View view) {
+        finish();
+        System.exit(0);
     }
 }
