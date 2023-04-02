@@ -121,5 +121,10 @@ public class PlayerTest {
     public void hardScoreCount() {
 
     }
+    @Test
+    public void playerDeathPosition() {
+
+    }
+
 
 }
