@@ -98,14 +98,27 @@ public class PlayerTest {
 //        assertEquals(eScore, fScore);
 //    }
     @Test
-    public void easyLife() {
+    public void easyLifeCount() {
 
     }
     @Test
-    public void mediumLife() {
+    public void mediumLifeCount() {
 
     }
-    @Test void hardLife() {
+    @Test
+    public void hardLifeCount() {
+
+    }
+    @Test
+    public void easyScoreCount() {
+
+    }
+    @Test
+    public void mediumScoreCount() {
+
+    }
+    @Test
+    public void hardScoreCount() {
 
     }
 
