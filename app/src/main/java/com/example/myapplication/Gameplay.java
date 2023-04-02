@@ -32,7 +32,8 @@ public class Gameplay extends AppCompatActivity {
     Player player;
     Sprite sprite;
     int height = 0;
-    static int score = 0;
+    int score = 0;
+    static int maxScore = 0;
     int numRoads;
     int playerID;
     float[] position;
@@ -116,32 +117,32 @@ public class Gameplay extends AppCompatActivity {
         ImageView fastcar6 = (ImageView) findViewById(R.id.fastcar6);
         ImageView safe = (ImageView) findViewById(R.id.safe);
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
-        Car car1 = new Car(slowcar1, 0,0);
-        Car car2 = new Car(slowcar2, 0,0);
-        Car car3 = new Car(slowcar3, 0,0);
-        checkCollision(car1, 1);
-        checkCollision(car2, 1);
-        checkCollision(car3, 1);
+        Car car1 = new Car(slowcar1, 0,0, 1);
+        Car car2 = new Car(slowcar2, 0,0, 1);
+        Car car3 = new Car(slowcar3, 0,0, 1);
+        checkCollision(car1);
+        checkCollision(car2);
+        checkCollision(car3);
         car1.move();
         car2.move();
         car3.move();
         ImageView bg2 = (ImageView) findViewById(R.id.bg2);
-        Car car4 = new Car (medcar1, 1,0);
-        Car car5 = new Car (medcar2,1,0);
-        Car car6 = new Car (medcar3,1,0);
-        checkCollision(car4, 2);
-        checkCollision(car5, 2);
-        checkCollision(car6, 2);
+        Car car4 = new Car (medcar1, 1,0, 2);
+        Car car5 = new Car (medcar2,1,0, 2);
+        Car car6 = new Car (medcar3,1,0, 2);
+        checkCollision(car4);
+        checkCollision(car5);
+        checkCollision(car6);
         car4.move();
         car5.move();
         car6.move();
         ImageView bg3 = (ImageView) findViewById(R.id.bg3);
-        Car car7 = new Car(fastcar1, 2,1);
-        Car car8 = new Car(fastcar2,2,1);
-        Car car9 = new Car(fastcar3,2,1);
-        checkCollision(car7, 3);
-        checkCollision(car8, 3);
-        checkCollision(car9, 3);
+        Car car7 = new Car(fastcar1, 2,1, 3);
+        Car car8 = new Car(fastcar2,2,1, 3);
+        Car car9 = new Car(fastcar3,2,1, 3);
+        checkCollision(car7);
+        checkCollision(car8);
+        checkCollision(car9);
         car7.move();
         car8.move();
         car9.move();
@@ -151,12 +152,12 @@ public class Gameplay extends AppCompatActivity {
             slowcar4.setVisibility(View.VISIBLE);
             slowcar5.setVisibility(View.VISIBLE);
             slowcar6.setVisibility(View.VISIBLE);
-            Car car10 = new Car(slowcar4,0, 0);
-            Car car11 = new Car(slowcar5,0, 0);
-            Car car12 = new Car(slowcar6,0, 0);
-            checkCollision(car10, 4);
-            checkCollision(car11, 4);
-            checkCollision(car12, 4);
+            Car car10 = new Car(slowcar4,0, 0, 4);
+            Car car11 = new Car(slowcar5,0, 0, 4);
+            Car car12 = new Car(slowcar6,0, 0, 4);
+            checkCollision(car10);
+            checkCollision(car11);
+            checkCollision(car12);
             car10.move();
             car11.move();
             car12.move();
@@ -173,12 +174,12 @@ public class Gameplay extends AppCompatActivity {
             fastcar4.setVisibility(View.VISIBLE);
             fastcar5.setVisibility(View.VISIBLE);
             fastcar6.setVisibility(View.VISIBLE);
-            Car car13 = new Car(fastcar4, 2, 1);
-            Car car14 = new Car(fastcar5, 2, 1);
-            Car car15 = new Car(fastcar6, 2, 1);
-            checkCollision(car13, 5);
-            checkCollision(car14, 5);
-            checkCollision(car15, 5);
+            Car car13 = new Car(fastcar4, 2, 1, 5);
+            Car car14 = new Car(fastcar5, 2, 1, 5);
+            Car car15 = new Car(fastcar6, 2, 1, 5);
+            checkCollision(car13);
+            checkCollision(car14);
+            checkCollision(car15);
             car13.move();
             car14.move();
             car15.move();
@@ -225,6 +226,8 @@ public class Gameplay extends AppCompatActivity {
         TextView scoreText = (TextView) findViewById(R.id.score);
         int temp = player.scoreReturn(numRoads);
         score += temp;
+        if (score > maxScore)
+            maxScore = score;
         if (temp < 0) {
             reduceLife();
         }
@@ -262,24 +265,24 @@ public class Gameplay extends AppCompatActivity {
         TextView swipeNums = (TextView) findViewById(R.id.score);
         swipeNums.setText(downx +", "+downy +", "+upx +", "+upy);
     }
-    public void checkCollision(Car car, int row) {
+    public void checkCollision(Car car) {
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                if (player.xPos >= car.sprite.getX() - 55 && player.xPos <= car.sprite.getX() + 55
-                        && height == row && player.lives != 0) {
+                if (player.lives != 0 && car.checkCollision(player.xPos, player.height)) {
                     reduceLife();
                     handler.postDelayed(this,500);
                 } else {
                     handler.postDelayed(this, 0);
-                    System.out.println(height);
                 }
             }
         };
         handler.post(runnable);
     }
-    public static int getScore() {
-        return score;
+    public static int getMaxScore() {
+        int temp = maxScore;
+        maxScore = 0;
+        return temp;
     }
 }

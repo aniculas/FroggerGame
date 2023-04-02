@@ -7,11 +7,13 @@ public abstract class Mover {
     ImageView sprite;
     int speed;
     int direction;
+    int row;
 
-    public Mover(ImageView sprite, int speed, int direction) {
+    public Mover(ImageView sprite, int speed, int direction, int row) {
         this.sprite = sprite;
         this.speed = speed;
         this.direction = direction;
+        this.row = row;
     }
 
     public void move() {
@@ -38,8 +40,7 @@ public abstract class Mover {
         handler.post(runnable);
     }
 
-    public abstract void checkForPlayer();
-    public abstract void handlePlayer();
+    public abstract boolean checkCollision(float xPos, int height);
 
 /* Old Move Methods
     public void moveLeft(int speed) {

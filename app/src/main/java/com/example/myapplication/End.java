@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.Gameplay.getScore;
+import static com.example.myapplication.Gameplay.getMaxScore;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ public class End extends AppCompatActivity implements MainMenu {
         setContentView(R.layout.activity_end);
 
         scoreText = (TextView) findViewById(R.id.score);
-        scoreText.setText("Final Score: " + getScore());
+        scoreText.setText("High Score: " + getMaxScore());
 
 /* Old Button Checker
         Button restart = (Button) findViewById(R.id.restart);
