@@ -98,6 +98,14 @@ public class PlayerTest {
 //        assertEquals(eScore, fScore);
 //    }
     @Test
+    public void waterDeath() {
+
+    }
+    @Test
+    public void carDeath() {
+
+    }
+    @Test
     public void easyLifeCount() {
 
     }
@@ -122,9 +130,12 @@ public class PlayerTest {
 
     }
     @Test
+    public void maxScore () {
+
+    }
+    @Test
     public void playerDeathPosition() {
 
     }
-
 
 }
