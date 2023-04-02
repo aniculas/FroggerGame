@@ -11,12 +11,17 @@ public class Player {
     float xPos;
     float yPos;
     float[] position = new float[2];
-    public Player(float xPos, float yPos) {
+    int lives;
+    //lives
+    //method to decrease life
+    //decrease different amount per difficulty
+    public Player(float xPos, float yPos, int lives) {
         this.xPos = xPos;
         this.yPos = yPos;
         height = 0;
         position[0] = 478f;
         position[1] = 1870f;
+        this.lives = lives;
     }
 
 //    public Player (ImageView sprite) {

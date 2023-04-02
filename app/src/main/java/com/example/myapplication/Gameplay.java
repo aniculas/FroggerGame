@@ -59,31 +59,35 @@ public class Gameplay extends AppCompatActivity {
         ImageView playerspriteb = (ImageView) findViewById(R.id.playerspriteb);
         TextView diff = (TextView) findViewById(R.id.diff);
         //SET HEARTS---------------------------------------------------------------------------
+        int numLives;
         if (difficulty.getCheckedRadioButtonId() == easy.getId()) {
             heart2.setVisibility(View.VISIBLE);
             heart3.setVisibility(View.VISIBLE);
             diff.setText("Easy");
+            numLives = 3;
         } else if (difficulty.getCheckedRadioButtonId() == medium.getId()) {
             heart2.setVisibility(View.VISIBLE);
             diff.setText("Medium");
+            numLives = 2;
         } else {
             diff.setText("Hard");
+            numLives = 1;
         }
         //SET SPRITE---------------------------------------------------------------------------
         if (spritepicker.getCheckedRadioButtonId() == green.getId()) {
             //player = new Player(playerspriteg);
             sprite = new Sprite(playerspriteg);
-            player = new Player(sprite.sprite.getX(), sprite.sprite.getY());
+            player = new Player(sprite.sprite.getX(), sprite.sprite.getY(), numLives);
             playerspriteg.setVisibility(View.VISIBLE);
         } else if (spritepicker.getCheckedRadioButtonId() == red.getId()) {
             //player = new Player(playerspriter);
             sprite = new Sprite(playerspriter);
-            player = new Player(sprite.sprite.getX(), sprite.sprite.getY());
+            player = new Player(sprite.sprite.getX(), sprite.sprite.getY(), numLives);
             playerspriter.setVisibility(View.VISIBLE);
         } else if (spritepicker.getCheckedRadioButtonId() == blue.getId()) {
             //player = new Player(playerspriteb);
             sprite = new Sprite(playerspriteb);
-            player = new Player(sprite.sprite.getX(), sprite.sprite.getY());
+            player = new Player(sprite.sprite.getX(), sprite.sprite.getY(), numLives);
             playerspriteb.setVisibility(View.VISIBLE);
         }
         TextView playerName = (TextView) findViewById(R.id.playername);
