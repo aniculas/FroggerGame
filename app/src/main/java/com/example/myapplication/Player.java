@@ -1,8 +1,5 @@
 package com.example.myapplication;
 
-import android.view.View;
-import android.widget.ImageView;
-
 public class Player {
     //ImageView sprite;
     int height;
@@ -35,6 +32,8 @@ public class Player {
         yPos = 1870f;
         position[0] = xPos;
         position[1] = yPos;
+        height = 0;
+        maxHeight = 0;
         return position;
     }
     public float[] move(float upx, float upy, float downx, float downy, float currX, float currY) {

@@ -9,17 +9,16 @@ import static com.example.myapplication.Config.getMedium;
 import static com.example.myapplication.Config.getName;
 import static com.example.myapplication.Config.getRed;
 import static com.example.myapplication.Config.getSprite;
-import static com.example.myapplication.End.scoreText;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -232,10 +231,13 @@ public class Gameplay extends AppCompatActivity {
         scoreText.setText("Score: " + player.score);
     }
     public void reduceLife() {
+        TextView scoreText = (TextView) findViewById(R.id.score);
         player.lives = player.lives - 1;
         if (heart3.getVisibility() == View.VISIBLE) {
             heart3.setVisibility(View.INVISIBLE);
             player.score = 0;
+            score = 0;
+            scoreText.setText("Score: " + player.score);
             position = player.resetPosition();
             height = player.height;
             sprite.sprite.setX(position[0]);
@@ -243,6 +245,8 @@ public class Gameplay extends AppCompatActivity {
         } else if (heart2.getVisibility() == View.VISIBLE) {
             heart2.setVisibility(View.INVISIBLE);
             player.score = 0;
+            score = 0;
+            scoreText.setText("Score: " + player.score);
             position = player.resetPosition();
             height = player.height;
             sprite.sprite.setX(position[0]);
@@ -263,9 +267,8 @@ public class Gameplay extends AppCompatActivity {
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                if (player.xPos >= car.sprite.getX() - 20 && player.xPos <= car.sprite.getX() + 20
+                if (player.xPos >= car.sprite.getX() - 55 && player.xPos <= car.sprite.getX() + 55
                         && height == row && player.lives != 0) {
-                    player.height = 0;
                     reduceLife();
                     handler.postDelayed(this,500);
                 } else {
