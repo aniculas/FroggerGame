@@ -95,7 +95,6 @@ public class Gameplay extends AppCompatActivity {
         // Background
         numRoads = (int) (Math.random() * 3) + 3;
         backgroundCreate(numRoads);
-
     }
 
     protected void backgroundCreate(int numRoads) {
@@ -116,6 +115,35 @@ public class Gameplay extends AppCompatActivity {
         ImageView fastcar5 = (ImageView) findViewById(R.id.fastcar5);
         ImageView fastcar6 = (ImageView) findViewById(R.id.fastcar6);
         ImageView safe = (ImageView) findViewById(R.id.safe);
+        ImageView logView = (ImageView) findViewById(R.id.log);
+        ImageView logView1 = (ImageView) findViewById(R.id.log1);
+        ImageView logView2 = (ImageView) findViewById(R.id.log2);
+        ImageView logView3 = (ImageView) findViewById(R.id.log3);
+        ImageView logView4 = (ImageView) findViewById(R.id.log4);
+        ImageView logView5 = (ImageView) findViewById(R.id.log5);
+        ImageView logView6 = (ImageView) findViewById(R.id.log6);
+        ImageView logView7 = (ImageView) findViewById(R.id.log7);
+        ImageView logView8 = (ImageView) findViewById(R.id.log8);
+        ImageView logView9 = (ImageView) findViewById(R.id.log9);
+        ImageView logView10 = (ImageView) findViewById(R.id.log10);
+        ImageView logView11 = (ImageView) findViewById(R.id.log11);
+        ImageView logView12 = (ImageView) findViewById(R.id.log12);
+        Log log = new Log(logView, 0,0,9);
+        Log log1 = new Log(logView1, 0,0,9);
+        Log log2 = new Log(logView2, 0,0,9);
+        Log log3 = new Log(logView3, 1,1,8);
+        Log log4 = new Log(logView4, 1,1,8);
+        Log log5 = new Log(logView5, 2,0,7);
+        Log log6 = new Log(logView6, 2,0,7);
+        Log log7 = new Log(logView7, 2,0,7);
+        checkCollision(log);
+        checkCollision(log1);
+        checkCollision(log2);
+        checkCollision(log3);
+        checkCollision(log4);
+        checkCollision(log5);
+        checkCollision(log6);
+        checkCollision(log7);
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
         Car car1 = new Car(slowcar1, 0,0, 1);
         Car car2 = new Car(slowcar2, 0,0, 1);
@@ -123,9 +151,6 @@ public class Gameplay extends AppCompatActivity {
         checkCollision(car1);
         checkCollision(car2);
         checkCollision(car3);
-        car1.move();
-        car2.move();
-        car3.move();
         ImageView bg2 = (ImageView) findViewById(R.id.bg2);
         Car car4 = new Car (medcar1, 1,0, 2);
         Car car5 = new Car (medcar2,1,0, 2);
@@ -133,9 +158,6 @@ public class Gameplay extends AppCompatActivity {
         checkCollision(car4);
         checkCollision(car5);
         checkCollision(car6);
-        car4.move();
-        car5.move();
-        car6.move();
         ImageView bg3 = (ImageView) findViewById(R.id.bg3);
         Car car7 = new Car(fastcar1, 2,1, 3);
         Car car8 = new Car(fastcar2,2,1, 3);
@@ -143,9 +165,6 @@ public class Gameplay extends AppCompatActivity {
         checkCollision(car7);
         checkCollision(car8);
         checkCollision(car9);
-        car7.move();
-        car8.move();
-        car9.move();
         ImageView bg4 = (ImageView) findViewById(R.id.bg4);
         if (numRoads > 3) {
             bg4.setImageResource(getResources().getIdentifier("road_row", "drawable", getPackageName()));
@@ -158,15 +177,21 @@ public class Gameplay extends AppCompatActivity {
             checkCollision(car10);
             checkCollision(car11);
             checkCollision(car12);
-            car10.move();
-            car11.move();
-            car12.move();
         } else {
             bg4.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         }
         ImageView bg5 = (ImageView) findViewById(R.id.bg5);
         if (numRoads == 3) {
             bg5.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
+            Log log10 = new Log(logView10, 1,0,5);
+            Log log11 = new Log(logView11, 1,0,5);
+            Log log12 = new Log(logView12, 1,0,5);
+            log10.sprite.setVisibility(View.VISIBLE);
+            log11.sprite.setVisibility(View.VISIBLE);
+            log12.sprite.setVisibility(View.VISIBLE);
+            checkCollision(log10);
+            checkCollision(log11);
+            checkCollision(log12);
         } else if (numRoads == 4) {
             bg5.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
@@ -180,15 +205,18 @@ public class Gameplay extends AppCompatActivity {
             checkCollision(car13);
             checkCollision(car14);
             checkCollision(car15);
-            car13.move();
-            car14.move();
-            car15.move();
         }
         ImageView bg6 = (ImageView) findViewById(R.id.bg6);
         if (numRoads == 5) {
             bg6.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
             bg6.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
+            Log log8 = new Log(logView8, 0, 1, 6);
+            Log log9 = new Log(logView9, 0, 1, 6);
+            log8.sprite.setVisibility(View.VISIBLE);
+            log9.sprite.setVisibility(View.VISIBLE);
+            checkCollision(log8);
+            checkCollision(log9);
         }
         ImageView bg7 = (ImageView) findViewById(R.id.bg7);
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
@@ -202,23 +230,17 @@ public class Gameplay extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN: //when swipe started
                 downx = event.getRawX(); //gets x of swipe start
                 downy = event.getRawY(); //gets y of swipe start
-
                 break;
             case MotionEvent.ACTION_UP: //when swipe ended
-
                 upx = event.getRawX(); //gets x of swipe end
                 upy = event.getRawY(); //gets y of swipe end
                 position = player.move(upx, upy, downx, downy, sprite.sprite.getX(),sprite.sprite.getY());
                 height = player.height;
                 sprite.sprite.setX(position[0]);
                 sprite.sprite.setY(position[1]);
-//                playerSprite.setX(position[0]);
-//                playerSprite.setY(position[0]);
-                //swipeValue(downx,downy,upx,upy);
                 setScore();
                 break;
         }
-
         return super.onTouchEvent(event);
     }
 
@@ -265,17 +287,29 @@ public class Gameplay extends AppCompatActivity {
         TextView swipeNums = (TextView) findViewById(R.id.score);
         swipeNums.setText(downx +", "+downy +", "+upx +", "+upy);
     }
-    public void checkCollision(Car car) {
+    public void checkCollision(Mover mover) {
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                if (player.lives != 0 && car.checkCollision(player.xPos, player.height)) {
-                    reduceLife();
-                    handler.postDelayed(this,500);
+                if (player.lives != 0 && mover.checkCollision(player.xPos, player.height)) {
+                    if (mover instanceof Car) {
+                        reduceLife();
+                        handler.postDelayed(this, 500);
+                    }
                 } else {
                     handler.postDelayed(this, 0);
                 }
+            }
+        };
+        handler.post(runnable);
+    }
+    public void checkLogCollision() {
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                handler.postDelayed(this, 0);
             }
         };
         handler.post(runnable);

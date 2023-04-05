@@ -9,6 +9,7 @@ public class Player {
     float yPos;
     float[] position = new float[2];
     int lives;
+    boolean logCollide;
     //lives
     //method to decrease life
     //decrease different amount per difficulty
@@ -19,13 +20,9 @@ public class Player {
         position[0] = 478f;
         position[1] = 1870f;
         this.lives = lives;
+        logCollide = false;
     }
 
-//    public Player (ImageView sprite) {
-//        this.sprite = sprite;
-//        sprite.setVisibility(View.VISIBLE);
-//        height = 0;
-//    }
 
     public float[] resetPosition() {
         xPos = 478f;
@@ -84,11 +81,7 @@ public class Player {
     }
     public int scoreReturn(int numRoads) {
         int temp = 0;
-        if (height >= (numRoads + 2)) {
-            height = 0;
-            maxHeight = 0;
-            return -score;
-        } else if (maxHeight < height) {
+        if (maxHeight < height) {
             maxHeight = height;
             if (height == 3) {
                 score += 5;
