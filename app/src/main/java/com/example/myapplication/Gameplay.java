@@ -29,7 +29,7 @@ public class Gameplay extends AppCompatActivity {
     float downx;
     float upy;
     float downy;
-    Player player;
+    static Player player;
     Sprite sprite;
     int height = 0;
     int score = 0;
@@ -45,6 +45,7 @@ public class Gameplay extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        height = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameplay);
         RadioGroup difficulty = getDifficulty();
@@ -92,6 +93,7 @@ public class Gameplay extends AppCompatActivity {
             player = new Player(sprite.sprite.getX(), sprite.sprite.getY(), numLives);
             playerspriteb.setVisibility(View.VISIBLE);
         }
+        player.height = 0;
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
         // Background
@@ -228,17 +230,26 @@ public class Gameplay extends AppCompatActivity {
                 height = player.height;
                 sprite.sprite.setX(position[0]);
                 sprite.sprite.setY(position[1]);
-                System.out.println(sprite.sprite.getX());
-                setScore();
+                if (height == 10) {
+                    setScore(true);
+                    Intent nextScreen = new Intent(Gameplay.this, End.class);
+                    finish();
+                    startActivity(nextScreen);
+                } else {
+                    setScore(false);
+                }
                 break;
         }
         return super.onTouchEvent(event);
     }
 
-    public void setScore() {
+    public void setScore(boolean win) {
         TextView scoreText = (TextView) findViewById(R.id.score);
         int temp = player.scoreReturn(numRoads);
         score += temp;
+        if (win) {
+            score = score + 150;
+        }
         if (score > maxScore)
             maxScore = score;
         if (temp < 0) {
@@ -291,6 +302,7 @@ public class Gameplay extends AppCompatActivity {
                 } else {
                     handler.postDelayed(this, 0);
                 }
+
             }
         };
         handler.post(runnable);
@@ -306,36 +318,45 @@ public class Gameplay extends AppCompatActivity {
                             if ((!checkOnLog(log12) && !checkOnLog(log11) && !checkOnLog(log10))) {
                                 reduceLife();
                             } else {
-                                sprite.sprite.setX(sprite.sprite.getX() - log.speed - 1);
+                                sprite.sprite.setX(sprite.sprite.getX() - log12.speed);
+                                player.xPos = sprite.sprite.getX();
+                                position[0] = sprite.sprite.getX();
                             }
                             break;
                         case 6:
                             if (!checkOnLog(log9) && !checkOnLog(log8)) {
-                                //reduceLife();
-                                System.out.println("dead");
+                                reduceLife();
                             } else {
-                                sprite.sprite.setX(sprite.sprite.getX() + log.speed + 1);
+                                sprite.sprite.setX(sprite.sprite.getX() + log9.speed);
+                                player.xPos = sprite.sprite.getX();
+                                position[0] = sprite.sprite.getX();
                             }
                             break;
                         case 7:
                             if (!checkOnLog(log5) && !checkOnLog(log6) && !checkOnLog(log7)) {
                                 reduceLife();
                             } else {
-                                sprite.sprite.setX(sprite.sprite.getX() - log.speed - 1);
+                                sprite.sprite.setX(sprite.sprite.getX() - log5.speed);
+                                player.xPos = sprite.sprite.getX();
+                                position[0] = sprite.sprite.getX();
                             }
                             break;
                         case 8:
                             if (!checkOnLog(log3) && !checkOnLog(log4)) {
                                 reduceLife();
                             } else {
-                                sprite.sprite.setX(sprite.sprite.getX() + log.speed + 1);
+                                sprite.sprite.setX(sprite.sprite.getX() + log4.speed);
+                                player.xPos = sprite.sprite.getX();
+                                position[0] = sprite.sprite.getX();
                             }
                             break;
                         case 9:
                             if (!checkOnLog(log) && !checkOnLog(log1) && !checkOnLog(log2)) {
                                 reduceLife();
                             } else {
-                                sprite.sprite.setX(sprite.sprite.getX() - log.speed - 1);
+                                sprite.sprite.setX(sprite.sprite.getX() - log.speed);
+                                player.xPos = sprite.sprite.getX();
+                                position[0] = sprite.sprite.getX();
                             }
                             break;
                     }
@@ -345,13 +366,17 @@ public class Gameplay extends AppCompatActivity {
         };
         handler.post(runnable);
     }
+
     public static int getMaxScore() {
         int temp = maxScore;
         maxScore = 0;
         return temp;
     }
+    public static Player getPlayer() {
+        return player;
+    }
     public boolean checkOnLog(Log log) {
-        if (((log.sprite.getX() - 70 <= sprite.sprite.getX() && log.sprite.getX() + 70 >= sprite.sprite.getX()))) {
+        if (((log.sprite.getX() - 90 <= sprite.sprite.getX() && log.sprite.getX() + 90 >= sprite.sprite.getX()))) {
             return true;
         }
         return false;
