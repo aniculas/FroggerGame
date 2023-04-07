@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 import static com.example.myapplication.Gameplay.getMaxScore;
-import static com.example.myapplication.Gameplay.getPlayer;
+import static com.example.myapplication.Gameplay.getPlayerLives;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ public class End extends AppCompatActivity implements MainMenu {
         scoreText = (TextView) findViewById(R.id.score);
         TextView winLoss = (TextView) findViewById(R.id.winloss);
         scoreText.setText("High Score: " + getMaxScore());
-        if (getPlayer().lives == 0) {
+        if (getPlayerLives() == 0) {
             winLoss.setText("You Lose!");
         } else {
             winLoss.setText("You Win!");

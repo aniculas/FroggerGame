@@ -29,7 +29,7 @@ public class Gameplay extends AppCompatActivity {
     float downx;
     float upy;
     float downy;
-    static Player player;
+    Player player;
     Sprite sprite;
     int height = 0;
     int score = 0;
@@ -40,6 +40,7 @@ public class Gameplay extends AppCompatActivity {
     ImageView heart2;
     ImageView heart3;
     Log log, log1,log2,log3,log4,log5,log6,log7,log8,log9,log10,log11,log12;
+    static int retLives;
 
 
 
@@ -97,7 +98,7 @@ public class Gameplay extends AppCompatActivity {
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
         // Background
-        numRoads = (int) (0) + 3;
+        numRoads = (int) (Math.random() * 3) + 3;
         backgroundCreate(numRoads);
         checkLogCollision();
     }
@@ -232,6 +233,7 @@ public class Gameplay extends AppCompatActivity {
                 sprite.sprite.setY(position[1]);
                 if (height == 10) {
                     setScore(true);
+                    retLives = player.lives;
                     Intent nextScreen = new Intent(Gameplay.this, End.class);
                     finish();
                     startActivity(nextScreen);
@@ -280,6 +282,7 @@ public class Gameplay extends AppCompatActivity {
             sprite.sprite.setY(position[1]);
         } else {
             score = player.score;
+            retLives = player.lives;
             Intent nextScreen = new Intent(Gameplay.this, End.class);
             finish();
             startActivity(nextScreen);
@@ -372,8 +375,8 @@ public class Gameplay extends AppCompatActivity {
         maxScore = 0;
         return temp;
     }
-    public static Player getPlayer() {
-        return player;
+    public static int getPlayerLives() {
+        return retLives;
     }
     public boolean checkOnLog(Log log) {
         if (((log.sprite.getX() - 90 <= sprite.sprite.getX() && log.sprite.getX() + 90 >= sprite.sprite.getX()))) {
