@@ -39,6 +39,8 @@ public class Gameplay extends AppCompatActivity {
     float[] position;
     ImageView heart2;
     ImageView heart3;
+    Log log, log1,log2,log3,log4,log5,log6,log7,log8,log9,log10,log11,log12;
+
 
 
     @Override
@@ -93,8 +95,9 @@ public class Gameplay extends AppCompatActivity {
         TextView playerName = (TextView) findViewById(R.id.playername);
         playerName.setText(getName().getText());
         // Background
-        numRoads = (int) (Math.random() * 3) + 3;
+        numRoads = (int) (0) + 3;
         backgroundCreate(numRoads);
+        checkLogCollision();
     }
 
     protected void backgroundCreate(int numRoads) {
@@ -128,22 +131,14 @@ public class Gameplay extends AppCompatActivity {
         ImageView logView10 = (ImageView) findViewById(R.id.log10);
         ImageView logView11 = (ImageView) findViewById(R.id.log11);
         ImageView logView12 = (ImageView) findViewById(R.id.log12);
-        Log log = new Log(logView, 0,0,9);
-        Log log1 = new Log(logView1, 0,0,9);
-        Log log2 = new Log(logView2, 0,0,9);
-        Log log3 = new Log(logView3, 1,1,8);
-        Log log4 = new Log(logView4, 1,1,8);
-        Log log5 = new Log(logView5, 2,0,7);
-        Log log6 = new Log(logView6, 2,0,7);
-        Log log7 = new Log(logView7, 2,0,7);
-        checkCollision(log);
-        checkCollision(log1);
-        checkCollision(log2);
-        checkCollision(log3);
-        checkCollision(log4);
-        checkCollision(log5);
-        checkCollision(log6);
-        checkCollision(log7);
+        log = new Log(logView, 0,0,9);
+        log1 = new Log(logView1, 0,0,9);
+        log2 = new Log(logView2, 0,0,9);
+        log3 = new Log(logView3, 1,1,8);
+        log4 = new Log(logView4, 1,1,8);
+        log5 = new Log(logView5, 2,0,7);
+        log6 = new Log(logView6, 2,0,7);
+        log7 = new Log(logView7, 2,0,7);
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
         Car car1 = new Car(slowcar1, 0,0, 1);
         Car car2 = new Car(slowcar2, 0,0, 1);
@@ -183,15 +178,12 @@ public class Gameplay extends AppCompatActivity {
         ImageView bg5 = (ImageView) findViewById(R.id.bg5);
         if (numRoads == 3) {
             bg5.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
-            Log log10 = new Log(logView10, 1,0,5);
-            Log log11 = new Log(logView11, 1,0,5);
-            Log log12 = new Log(logView12, 1,0,5);
+            log10 = new Log(logView10, 1,0,5);
+            log11 = new Log(logView11, 1,0,5);
+            log12 = new Log(logView12, 1,0,5);
             log10.sprite.setVisibility(View.VISIBLE);
             log11.sprite.setVisibility(View.VISIBLE);
             log12.sprite.setVisibility(View.VISIBLE);
-            checkCollision(log10);
-            checkCollision(log11);
-            checkCollision(log12);
         } else if (numRoads == 4) {
             bg5.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
@@ -211,12 +203,10 @@ public class Gameplay extends AppCompatActivity {
             bg6.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
             bg6.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
-            Log log8 = new Log(logView8, 0, 1, 6);
-            Log log9 = new Log(logView9, 0, 1, 6);
+            log8 = new Log(logView8, 0, 1, 6);
+            log9 = new Log(logView9, 0, 1, 6);
             log8.sprite.setVisibility(View.VISIBLE);
             log9.sprite.setVisibility(View.VISIBLE);
-            checkCollision(log8);
-            checkCollision(log9);
         }
         ImageView bg7 = (ImageView) findViewById(R.id.bg7);
         ImageView bg8 = (ImageView) findViewById(R.id.bg8);
@@ -238,6 +228,7 @@ public class Gameplay extends AppCompatActivity {
                 height = player.height;
                 sprite.sprite.setX(position[0]);
                 sprite.sprite.setY(position[1]);
+                System.out.println(sprite.sprite.getX());
                 setScore();
                 break;
         }
@@ -309,6 +300,46 @@ public class Gameplay extends AppCompatActivity {
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
+                if (height > numRoads + 1 && player.lives != 0) {
+                    switch (height) {
+                        case 5:
+                            if ((!checkOnLog(log12) && !checkOnLog(log11) && !checkOnLog(log10))) {
+                                reduceLife();
+                            } else {
+                                sprite.sprite.setX(sprite.sprite.getX() - log.speed - 1);
+                            }
+                            break;
+                        case 6:
+                            if (!checkOnLog(log9) && !checkOnLog(log8)) {
+                                //reduceLife();
+                                System.out.println("dead");
+                            } else {
+                                sprite.sprite.setX(sprite.sprite.getX() + log.speed + 1);
+                            }
+                            break;
+                        case 7:
+                            if (!checkOnLog(log5) && !checkOnLog(log6) && !checkOnLog(log7)) {
+                                reduceLife();
+                            } else {
+                                sprite.sprite.setX(sprite.sprite.getX() - log.speed - 1);
+                            }
+                            break;
+                        case 8:
+                            if (!checkOnLog(log3) && !checkOnLog(log4)) {
+                                reduceLife();
+                            } else {
+                                sprite.sprite.setX(sprite.sprite.getX() + log.speed + 1);
+                            }
+                            break;
+                        case 9:
+                            if (!checkOnLog(log) && !checkOnLog(log1) && !checkOnLog(log2)) {
+                                reduceLife();
+                            } else {
+                                sprite.sprite.setX(sprite.sprite.getX() - log.speed - 1);
+                            }
+                            break;
+                    }
+                }
                 handler.postDelayed(this, 0);
             }
         };
@@ -318,5 +349,11 @@ public class Gameplay extends AppCompatActivity {
         int temp = maxScore;
         maxScore = 0;
         return temp;
+    }
+    public boolean checkOnLog(Log log) {
+        if (((log.sprite.getX() - 70 <= sprite.sprite.getX() && log.sprite.getX() + 70 >= sprite.sprite.getX()))) {
+            return true;
+        }
+        return false;
     }
 }
