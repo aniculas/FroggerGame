@@ -1,15 +1,5 @@
 package com.example.myapplication;
 
-
-import static com.example.myapplication.Config.getBlue;
-import static com.example.myapplication.Config.getDifficulty;
-import static com.example.myapplication.Config.getEasy;
-import static com.example.myapplication.Config.getGreen;
-import static com.example.myapplication.Config.getMedium;
-import static com.example.myapplication.Config.getName;
-import static com.example.myapplication.Config.getRed;
-import static com.example.myapplication.Config.getSprite;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,16 +39,10 @@ public class Gameplay extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String data = getIntent().getStringExtra("data");
         height = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameplay);
-        RadioGroup difficulty = getDifficulty();
-        RadioGroup spritepicker = getSprite();
-        RadioButton medium = getMedium();
-        RadioButton easy = getEasy();
-        RadioButton green = getGreen();
-        RadioButton blue = getBlue();
-        RadioButton red = getRed();
         heart2 = (ImageView) findViewById(R.id.heart2);
         heart3 = (ImageView) findViewById(R.id.heart3);
         ImageView playerspriteg = (ImageView) findViewById(R.id.playerspriteg);
@@ -67,12 +51,12 @@ public class Gameplay extends AppCompatActivity {
         TextView diff = (TextView) findViewById(R.id.diff);
         //SET HEARTS---------------------------------------------------------------------------
         int numLives;
-        if (difficulty.getCheckedRadioButtonId() == easy.getId()) {
+        if (data.charAt(0) == '3') {
             heart2.setVisibility(View.VISIBLE);
             heart3.setVisibility(View.VISIBLE);
             diff.setText("Easy");
             numLives = 3;
-        } else if (difficulty.getCheckedRadioButtonId() == medium.getId()) {
+        } else if (data.charAt(0) == '2') {
             heart2.setVisibility(View.VISIBLE);
             diff.setText("Medium");
             numLives = 2;
@@ -81,17 +65,17 @@ public class Gameplay extends AppCompatActivity {
             numLives = 1;
         }
         //SET SPRITE---------------------------------------------------------------------------
-        if (spritepicker.getCheckedRadioButtonId() == green.getId()) {
+        if (data.charAt(1) == 'g') {
             //player = new Player(playerspriteg);
             sprite = new Sprite(playerspriteg);
             player = new Player(sprite.sprite.getX(), sprite.sprite.getY(), numLives);
             playerspriteg.setVisibility(View.VISIBLE);
-        } else if (spritepicker.getCheckedRadioButtonId() == red.getId()) {
+        } else if (data.charAt(1) == 'r') {
             //player = new Player(playerspriter);
             sprite = new Sprite(playerspriter);
             player = new Player(sprite.sprite.getX(), sprite.sprite.getY(), numLives);
             playerspriter.setVisibility(View.VISIBLE);
-        } else if (spritepicker.getCheckedRadioButtonId() == blue.getId()) {
+        } else {
             //player = new Player(playerspriteb);
             sprite = new Sprite(playerspriteb);
             player = new Player(sprite.sprite.getX(), sprite.sprite.getY(), numLives);
@@ -99,7 +83,7 @@ public class Gameplay extends AppCompatActivity {
         }
         player.height = 0;
         TextView playerName = (TextView) findViewById(R.id.playername);
-        playerName.setText(getName().getText());
+        playerName.setText(data.substring(2));
         // Background
         numRoads = (int) (Math.random() * 3) + 3;
         backgroundCreate(numRoads);

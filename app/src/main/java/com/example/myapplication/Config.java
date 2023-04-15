@@ -21,6 +21,7 @@ public class Config extends AppCompatActivity {
     private static RadioButton blue;
     private static EditText name;
     private static TextView warning;
+    private String data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,35 +51,30 @@ public class Config extends AppCompatActivity {
             warning.setVisibility(View.VISIBLE); //Warning message if name is invalid
             return false;
         } else {
+            compileData();
             Intent nextScreen = new Intent(Config.this, Gameplay.class);
+            nextScreen.putExtra("data", data);
             finish();
             startActivity(nextScreen);
             return true;
         }
     }
-    public static RadioGroup getDifficulty() {
-        return difficulty;
-    }
-    public static RadioGroup getSprite() {
-        return spritepicker;
-    }
-    public static RadioButton getEasy() {
-        return easy;
-    }
-    public static RadioButton getMedium() {
-        return medium;
-    }
-    public static RadioButton getRed() {
-        return red;
-    }
-    public static RadioButton getGreen() {
-        return green;
-    }
-    public static RadioButton getBlue() {
-        return blue;
-    }
-    public static EditText getName() {
-        return name;
+
+    private void compileData() {
+        if (difficulty.getCheckedRadioButtonId() == easy.getId())
+            data = "3";
+        else if (difficulty.getCheckedRadioButtonId() == medium.getId())
+            data = "2";
+        else
+            data = "1";
+        if (spritepicker.getCheckedRadioButtonId() == green.getId())
+            data += "g";
+        else if (spritepicker.getCheckedRadioButtonId() == red.getId())
+            data += "r";
+        else {
+            data += "b";
+        }
+        data += name.getText();
     }
     public static TextView getWarning() {
         return warning;
