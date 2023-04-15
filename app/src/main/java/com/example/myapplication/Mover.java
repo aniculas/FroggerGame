@@ -6,13 +6,11 @@ import android.widget.ImageView;
 public abstract class Mover {
     ImageView sprite;
     int speed;
-    int direction;
     int row;
 
-    public Mover(ImageView sprite, int speed, int direction, int row) {
+    public Mover(ImageView sprite, int speed, int row) {
         this.sprite = sprite;
         this.speed = speed;
-        this.direction = direction;
         this.row = row;
         move();
     }
@@ -24,10 +22,8 @@ public abstract class Mover {
             public void run() {
                 float x = sprite.getX();
 
-                if ((direction == 0) && (x < -100))
+                if (x < -100)
                     x = 1000;
-                else if (direction == 0)
-                    x -= speed;
                 else if (x > 1000)
                     x = -100;
                 else

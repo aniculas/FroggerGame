@@ -22,6 +22,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Gameplay extends AppCompatActivity {
 
@@ -39,7 +42,7 @@ public class Gameplay extends AppCompatActivity {
     float[] position;
     ImageView heart2;
     ImageView heart3;
-    Log log, log1,log2,log3,log4,log5,log6,log7,log8,log9,log10,log11,log12;
+    Log log0, log1,log2,log3,log4,log5,log6,log7,log8,log9,log10,log11,log12;
     static int retLives;
 
 
@@ -134,32 +137,32 @@ public class Gameplay extends AppCompatActivity {
         ImageView logView10 = (ImageView) findViewById(R.id.log10);
         ImageView logView11 = (ImageView) findViewById(R.id.log11);
         ImageView logView12 = (ImageView) findViewById(R.id.log12);
-        log = new Log(logView, 0,0,9);
-        log1 = new Log(logView1, 0,0,9);
-        log2 = new Log(logView2, 0,0,9);
-        log3 = new Log(logView3, 1,1,8);
-        log4 = new Log(logView4, 1,1,8);
-        log5 = new Log(logView5, 2,0,7);
-        log6 = new Log(logView6, 2,0,7);
-        log7 = new Log(logView7, 2,0,7);
+        log0 = new Log(logView, -1,9);
+        log1 = new Log(logView1, -1,9);
+        log2 = new Log(logView2, -1,9);
+        log3 = new Log(logView3, 2,8);
+        log4 = new Log(logView4, 2,8);
+        log5 = new Log(logView5, -3,7);
+        log6 = new Log(logView6, -3,7);
+        log7 = new Log(logView7, -3,7);
         ImageView bg1 = (ImageView) findViewById(R.id.bg1);
-        Car car1 = new Car(slowcar1, 0,0, 1);
-        Car car2 = new Car(slowcar2, 0,0, 1);
-        Car car3 = new Car(slowcar3, 0,0, 1);
+        Car car1 = new Car(slowcar1, -1,1);
+        Car car2 = new Car(slowcar2, -1,1);
+        Car car3 = new Car(slowcar3, -1,1);
         checkCollision(car1);
         checkCollision(car2);
         checkCollision(car3);
         ImageView bg2 = (ImageView) findViewById(R.id.bg2);
-        Car car4 = new Car (medcar1, 1,0, 2);
-        Car car5 = new Car (medcar2,1,0, 2);
-        Car car6 = new Car (medcar3,1,0, 2);
+        Car car4 = new Car (medcar1,-2, 2);
+        Car car5 = new Car (medcar2,-2, 2);
+        Car car6 = new Car (medcar3,-2, 2);
         checkCollision(car4);
         checkCollision(car5);
         checkCollision(car6);
         ImageView bg3 = (ImageView) findViewById(R.id.bg3);
-        Car car7 = new Car(fastcar1, 2,1, 3);
-        Car car8 = new Car(fastcar2,2,1, 3);
-        Car car9 = new Car(fastcar3,2,1, 3);
+        Car car7 = new Car(fastcar1,3, 3);
+        Car car8 = new Car(fastcar2,3, 3);
+        Car car9 = new Car(fastcar3,3, 3);
         checkCollision(car7);
         checkCollision(car8);
         checkCollision(car9);
@@ -169,9 +172,9 @@ public class Gameplay extends AppCompatActivity {
             slowcar4.setVisibility(View.VISIBLE);
             slowcar5.setVisibility(View.VISIBLE);
             slowcar6.setVisibility(View.VISIBLE);
-            Car car10 = new Car(slowcar4,0, 0, 4);
-            Car car11 = new Car(slowcar5,0, 0, 4);
-            Car car12 = new Car(slowcar6,0, 0, 4);
+            Car car10 = new Car(slowcar4,-1, 4);
+            Car car11 = new Car(slowcar5,-1, 4);
+            Car car12 = new Car(slowcar6,-1, 4);
             checkCollision(car10);
             checkCollision(car11);
             checkCollision(car12);
@@ -181,9 +184,9 @@ public class Gameplay extends AppCompatActivity {
         ImageView bg5 = (ImageView) findViewById(R.id.bg5);
         if (numRoads == 3) {
             bg5.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
-            log10 = new Log(logView10, 1,0,5);
-            log11 = new Log(logView11, 1,0,5);
-            log12 = new Log(logView12, 1,0,5);
+            log10 = new Log(logView10, -2,5);
+            log11 = new Log(logView11, -2,5);
+            log12 = new Log(logView12, -2,5);
             log10.sprite.setVisibility(View.VISIBLE);
             log11.sprite.setVisibility(View.VISIBLE);
             log12.sprite.setVisibility(View.VISIBLE);
@@ -194,9 +197,9 @@ public class Gameplay extends AppCompatActivity {
             fastcar4.setVisibility(View.VISIBLE);
             fastcar5.setVisibility(View.VISIBLE);
             fastcar6.setVisibility(View.VISIBLE);
-            Car car13 = new Car(fastcar4, 2, 1, 5);
-            Car car14 = new Car(fastcar5, 2, 1, 5);
-            Car car15 = new Car(fastcar6, 2, 1, 5);
+            Car car13 = new Car(fastcar4, 3, 5);
+            Car car14 = new Car(fastcar5, 3, 5);
+            Car car15 = new Car(fastcar6, 3, 5);
             checkCollision(car13);
             checkCollision(car14);
             checkCollision(car15);
@@ -206,8 +209,8 @@ public class Gameplay extends AppCompatActivity {
             bg6.setImageResource(getResources().getIdentifier("grass_row", "drawable", getPackageName()));
         } else {
             bg6.setImageResource(getResources().getIdentifier("river_row_new", "drawable", getPackageName()));
-            log8 = new Log(logView8, 0, 1, 6);
-            log9 = new Log(logView9, 0, 1, 6);
+            log8 = new Log(logView8, 1, 6);
+            log9 = new Log(logView9, 1, 6);
             log8.sprite.setVisibility(View.VISIBLE);
             log9.sprite.setVisibility(View.VISIBLE);
         }
@@ -316,52 +319,33 @@ public class Gameplay extends AppCompatActivity {
             @Override
             public void run() {
                 if (height > numRoads + 1 && player.lives != 0) {
+                    ArrayList<Log> logs = new ArrayList<>();
                     switch (height) {
                         case 5:
-                            if ((!checkOnLog(log12) && !checkOnLog(log11) && !checkOnLog(log10))) {
-                                reduceLife();
-                            } else {
-                                sprite.sprite.setX(sprite.sprite.getX() - log12.speed);
-                                player.xPos = sprite.sprite.getX();
-                                position[0] = sprite.sprite.getX();
-                            }
+                            logs = new ArrayList<>(Arrays.asList(log10, log11, log12));
                             break;
                         case 6:
-                            if (!checkOnLog(log9) && !checkOnLog(log8)) {
-                                reduceLife();
-                            } else {
-                                sprite.sprite.setX(sprite.sprite.getX() + log9.speed);
-                                player.xPos = sprite.sprite.getX();
-                                position[0] = sprite.sprite.getX();
-                            }
+                            logs = new ArrayList<>(Arrays.asList(log8, log9));
                             break;
                         case 7:
-                            if (!checkOnLog(log5) && !checkOnLog(log6) && !checkOnLog(log7)) {
-                                reduceLife();
-                            } else {
-                                sprite.sprite.setX(sprite.sprite.getX() - log5.speed);
-                                player.xPos = sprite.sprite.getX();
-                                position[0] = sprite.sprite.getX();
-                            }
+                            logs = new ArrayList<>(Arrays.asList(log5, log6, log7));
                             break;
                         case 8:
-                            if (!checkOnLog(log3) && !checkOnLog(log4)) {
-                                reduceLife();
-                            } else {
-                                sprite.sprite.setX(sprite.sprite.getX() + log4.speed);
-                                player.xPos = sprite.sprite.getX();
-                                position[0] = sprite.sprite.getX();
-                            }
+                            logs = new ArrayList<>(Arrays.asList(log3, log4));
                             break;
                         case 9:
-                            if (!checkOnLog(log) && !checkOnLog(log1) && !checkOnLog(log2)) {
-                                reduceLife();
-                            } else {
-                                sprite.sprite.setX(sprite.sprite.getX() - log.speed);
-                                player.xPos = sprite.sprite.getX();
-                                position[0] = sprite.sprite.getX();
-                            }
+                            logs = new ArrayList<>(Arrays.asList(log0, log1, log2));
                             break;
+                    }
+                    boolean onLog = false;
+                    for (Log log : logs)
+                        onLog = onLog || checkOnLog(log);
+                    if (!onLog) {
+                        reduceLife();
+                    } else {
+                        sprite.sprite.setX(sprite.sprite.getX() + logs.get(0).speed);
+                        player.xPos = sprite.sprite.getX();
+                        position[0] = sprite.sprite.getX();
                     }
                 }
                 handler.postDelayed(this, 0);

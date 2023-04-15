@@ -4,8 +4,8 @@ import android.widget.ImageView;
 
 public class Car extends Mover {
 
-    public Car(ImageView sprite, int speedChoice, int direction, int row) {
-        super(sprite, 2 * (speedChoice + 1), direction, row);
+    public Car(ImageView sprite, int speed, int row) {
+        super(sprite, 2 * speed, row);
     }
 
 }
