@@ -96,4 +96,9 @@ public class Player {
         }
         return temp;
     }
+    public void checkPlacement(float xPos) {
+        if (xPos > 2000f) {
+            lives--;
+        }
+    }
 }

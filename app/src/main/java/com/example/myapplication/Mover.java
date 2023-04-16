@@ -44,7 +44,7 @@ public abstract class Mover {
     public boolean checkCollision(float xPos, int height) {
         return xPos >= sprite.getX() - 55 && xPos <= sprite.getX() + 55 && height == row;
     }
-    public boolean checkCollision(float xPos) {
+    public boolean checkCollision(float xPos) { //for tests also
         return 478f == xPos;
     }
 
