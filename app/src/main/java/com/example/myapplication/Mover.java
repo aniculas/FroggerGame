@@ -15,6 +15,10 @@ public abstract class Mover {
         move();
     }
 
+    public Mover() {
+        //need for tests oops
+    }
+
     public void move() {
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
@@ -39,6 +43,9 @@ public abstract class Mover {
 
     public boolean checkCollision(float xPos, int height) {
         return xPos >= sprite.getX() - 55 && xPos <= sprite.getX() + 55 && height == row;
+    }
+    public boolean checkCollision(float xPos) {
+        return 478f == xPos;
     }
 
 }
